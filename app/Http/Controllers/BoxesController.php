@@ -35,13 +35,16 @@ class BoxesController extends Controller
         $box = [];
         foreach ($tags as $tag) {
             $box_id  = Box::where('tag_tag',$tag)->firstOrFail();
-            $box[$tag] = $box_id;
+            $id = $box_id->id;
+            $box[$id] = $tag;
         }
         $employeeTags = Tag::has('employee')->pluck('tag');
         $employee = [];
         foreach ($employeeTags as $tag) {
-            $employeeName = Employee::where('tag_tag',$tag)->firstOrFail();
-            $employee[$tag] = $employeeName;
+            $employees = Employee::where('tag_tag',$tag)->firstOrFail();
+            $name   = $employees->employee_name;
+            $id     = $employees->id;
+            $employee[$id] = $name;
         }
         return view('box.inboundbox', compact( 'box','employee'));
     }
