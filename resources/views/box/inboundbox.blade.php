@@ -16,9 +16,9 @@
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxTag">Box Tag</label>
-                            <select type="text" class="form-control" id="inputBoxName" name='tag' placeholder="Box Tag" required>
-                            @foreach ($tags as $tags)
-                              <option>{{$tags}}</option>
+                            <select type="text" class="form-control" id="inputBoxName" name='box_id' placeholder="Box Tag" required>
+                            @foreach ($box as $box_id => $tag)
+                              <option value="{{$box_id}}">{{$tag}}</option>
                             @endforeach
                             </select>
                           </div>
@@ -26,7 +26,7 @@
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxTag">Expected Arrival Date</label>
-                            <input type="text" class="form-control" id="datepicker" name='expire' placeholder="Expected Arrival Date" required>
+                            <input type="text" class="form-control" id="datepicker" name='expect_arr_date' placeholder="Expected Arrival Date" required>
                             @if ($errors->has('expire'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('expire') }}</strong>
@@ -37,7 +37,7 @@
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxTag">Actual Arrival Date</label>
-                            <input type="text" class="form-control" id="datepicker" name='expire' placeholder="Actual Arrival Date" required>
+                            <input type="text" class="form-control" id="datepicker" name='act_arr_date' placeholder="Actual Arrival Date" required>
                             @if ($errors->has('expire'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('expire') }}</strong>
@@ -48,13 +48,17 @@
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxTag">Arrival Destination</label>
-                            <input type="text" class="form-control" id="" name='' placeholder="Arrival Destination" required>
+                            <input type="text" class="form-control" id="" name='warehouse' placeholder="Arrival Destination" required>
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxTag">Person in Chart</label>
-                            <input type="text" class="form-control" id="" name='' placeholder="Person in Chart" required>
+                            <select type="text" class="form-control" id="" name='employee' placeholder="Person in Charge" required>
+                            @foreach ($employee as $id => $name)
+                              <option value="{{$id}}">{{$name}}</option>
+                            @endforeach
+                            </select>
                           </div>
                         </div>
                           <br>
