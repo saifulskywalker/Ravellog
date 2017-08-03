@@ -48,21 +48,13 @@
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxTag">Arrival Destination</label>
-                            <select type="text" class="form-control" id="inputBoxName" name='tag' placeholder="Arrival Destination" required>
-                            @foreach ($tags as $tags)
-                              <option>{{$tags}}</option>
-                            @endforeach
-                            </select>
+                            <input type="text" class="form-control" id="" name='' placeholder="Arrival Destination" required>
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxTag">Person in Chart</label>
-                            <select type="text" class="form-control" id="inputBoxName" name='tag' placeholder="Person in Chart" required>
-                            @foreach ($tags as $tags)
-                              <option>{{$tags}}</option>
-                            @endforeach
-                            </select>
+                            <input type="text" class="form-control" id="" name='' placeholder="Person in Chart" required>
                           </div>
                         </div>
                           <br>
