@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
                 <div class="panel-body">
-                    This the account page, just for fun
+                    This the account page, just for fun. Have fun to code!
                 </div>
             </div>
         </div>
