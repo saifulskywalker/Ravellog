@@ -24,6 +24,17 @@ class BoxesController extends Controller
     }
 
     /**
+     * Show the form for creating a new inboundbox.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function inbound()
+    {
+        $tags = Tag::has('box')->pluck('tag');
+        return view('box.inboundbox', compact( 'tags'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -53,25 +64,29 @@ class BoxesController extends Controller
         );
         $validator = Validator::make(Input::all(), $rules);
 
-        // process the login
+        // validation for the post data
         if ($validator->fails()) {
             return Redirect::to('boxes/create')
                 ->withErrors($validator)
                 ->withInput();
         } else {
-            // store
+            // store to boxes column
             $box = new Box;
             $box->tag_tag       = Input::get('tag');
             $box->category      = Input::get('category');
             $box->expire_date   = Input::get('expire');
             $box->save();
 
+            //get the box id that was just stored to database
             $box_id = $box->id;
 
+            //get the post data for the items
             $item = Input::get('item_name');
             $quantity = Input::get('quantity');
             $counting = count($item);
 
+            //concantenate the input redundants
+            //if the user input the same item more than once, this script will sum the total of said item
             for ($i = 0; $i < $counting-1; $i++) {
                 for ($j = $i+1; $j < $counting; $j++) {
                     if (($item[$i] == $item[$j]) AND $item[$i]!='x') {
@@ -82,7 +97,7 @@ class BoxesController extends Controller
                 }
             }
 
-
+            //store the items to the database
             foreach (array_combine($item,$quantity) as $item => $quantity) {
                 if ($item != 'x') {
                     $items = new Item;

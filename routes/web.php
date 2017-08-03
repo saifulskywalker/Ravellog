@@ -16,5 +16,7 @@ Route::get('/', 'DashboardController@index')->name('/');
 Auth::routes();
 
 Route::resource('boxes','BoxesController');
+Route::get('inboundbox','BoxesController@inbound')->name('boxes.inboundbox');
 Route::post('inboundboxes','BoxesController@inboundboxes')->name('boxes.inboundboxes');
+Route::get('outboundbox','BoxesController@outbound')->name('boxes.outboundbox');
 Route::post('outboundboxes','BoxesController@outboundboxes')->name('boxes.outboundboxes');
