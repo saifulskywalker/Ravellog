@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Input;
 use App\Box;
 use App\Item;
 use App\Tag;
+use App\Employee;
 use Session;
 use Redirect;
 
@@ -31,8 +32,18 @@ class BoxesController extends Controller
     public function inbound()
     {
         $tags = Tag::has('box')->pluck('tag');
-        $employeeTags = Tag::has('employee')->pluck('tag','employee_name');
-        return view('box.inboundbox', compact( 'tags','employeeTags'));
+        $box = [];
+        foreach ($tags as $tag) {
+            $box_id  = Box::where('tag_tag',$tag)->firstOrFail();
+            $box[$tag] = $box_id;
+        }
+        $employeeTags = Tag::has('employee')->pluck('tag');
+        $employee = [];
+        foreach ($employeeTags as $tag) {
+            $employeeName = Employee::where('tag_tag',$tag)->firstOrFail();
+            $employee[$tag] = $employeeName;
+        }
+        return view('box.inboundbox', compact( 'box','employee'));
     }
 
     /**
