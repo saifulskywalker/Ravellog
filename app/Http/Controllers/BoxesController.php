@@ -31,7 +31,8 @@ class BoxesController extends Controller
     public function inbound()
     {
         $tags = Tag::has('box')->pluck('tag');
-        return view('box.inboundbox', compact( 'tags'));
+        $employeeTags = Tag::has('employee')->pluck('tag','employee_name');
+        return view('box.inboundbox', compact( 'tags','employeeTags'));
     }
 
     /**
