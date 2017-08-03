@@ -64,7 +64,7 @@
     </script>
     <script type='text/javascript'>
       $( function() {
-        $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+        $( "#datepicker1,#datepicker2,#datepicker3" ).datepicker({ dateFormat: 'yy-mm-dd' });
       } );
     </script>
 

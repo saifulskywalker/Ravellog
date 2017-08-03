@@ -26,7 +26,7 @@
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxTag">Expected Arrival Date</label>
-                            <input type="text" class="form-control" id="datepicker" name='expect_arr_date' placeholder="Expected Arrival Date" required>
+                            <input type="text" class="form-control" id="datepicker1" name='expect_arr_date' placeholder="Expected Arrival Date" required>
                             @if ($errors->has('expire'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('expire') }}</strong>
@@ -37,7 +37,7 @@
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxTag">Actual Arrival Date</label>
-                            <input type="text" class="form-control" id="datepicker" name='act_arr_date' placeholder="Actual Arrival Date" required>
+                            <input type="text" class="form-control" id="datepicker2" name='act_arr_date' placeholder="Actual Arrival Date" required>
                             @if ($errors->has('expire'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('expire') }}</strong>
