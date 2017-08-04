@@ -64,6 +64,9 @@
         width: 100% !important;
         text-align: left;
     }
+     .multiselect {
+        text-align: left;
+    }
     </style>
     <script>
         window.Laravel = {!! json_encode([
