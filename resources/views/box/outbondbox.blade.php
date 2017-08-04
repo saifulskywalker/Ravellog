@@ -9,7 +9,7 @@
                     <form class="form-horizontal" style="padding:1em" method="POST" action="{{ route('boxes.store') }}">
                     {{ csrf_field() }}
                       <fieldset>
-                        <legend>Inbound Box</legend>
+                        <legend>Outbound Box</legend>
                         @if (Session::has('message'))
                           <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
@@ -25,8 +25,8 @@
                         </div>
                         <div class="form-group">
                           <div class="col-md-12">
-                            <label for="inputBoxTag">Expected Arrival Date</label>
-                            <input type="text" class="form-control" id="datepicker1" name='expect_arr_date' placeholder="Expected Arrival Date" required>
+                            <label for="inputBoxTag">Expected Departure Date</label>
+                            <input type="text" class="form-control" id="datepicker1" name='expect_dep_date' placeholder="Expected Departure Date" required>
                             @if ($errors->has('expire'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('expire') }}</strong>
@@ -36,8 +36,8 @@
                         </div>
                         <div class="form-group">
                           <div class="col-md-12">
-                            <label for="inputBoxTag">Arrival Destination</label>
-                            <input type="text" class="form-control" id="" name='warehouse' placeholder="Arrival Destination" required>
+                            <label for="inputBoxTag">Departure Destination</label>
+                            <input type="text" class="form-control" id="" name='warehouse' placeholder="Departure Destination" required>
                           </div>
                         </div>
                         <div class="form-group">
