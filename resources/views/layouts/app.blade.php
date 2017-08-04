@@ -19,9 +19,11 @@
     <link href="{{ asset('css/simple-sidebar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-multiselect.css') }}" rel="stylesheet">
     <!-- jQuery -->
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-multiselect.js') }}"></script>
     <style>
         .bottom-column
             {
@@ -65,6 +67,9 @@
     <script type='text/javascript'>
       $( function() {
         $( "#datepicker1,#datepicker2,#datepicker3" ).datepicker({ dateFormat: 'yy-mm-dd' });
+      } );
+      $(document).ready(function() {
+        $("#delete-rfid-tag").multiselect();
       } );
     </script>
 
