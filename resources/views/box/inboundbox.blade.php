@@ -36,24 +36,13 @@
                         </div>
                         <div class="form-group">
                           <div class="col-md-12">
-                            <label for="inputBoxTag">Actual Arrival Date</label>
-                            <input type="text" class="form-control" id="datepicker2" name='act_arr_date' placeholder="Actual Arrival Date" required>
-                            @if ($errors->has('expire'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('expire') }}</strong>
-                                    </span>
-                            @endif
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-md-12">
                             <label for="inputBoxTag">Arrival Destination</label>
                             <input type="text" class="form-control" id="" name='warehouse' placeholder="Arrival Destination" required>
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="col-md-12">
-                            <label for="inputBoxTag">Person in Chart</label>
+                            <label for="inputBoxTag">Person in Charge</label>
                             <select type="text" class="form-control" id="" name='employee' placeholder="Person in Charge" required>
                             @foreach ($employee as $id => $name)
                               <option value="{{$id}}">{{$name}}</option>
