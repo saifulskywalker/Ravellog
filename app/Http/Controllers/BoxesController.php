@@ -33,7 +33,6 @@ class BoxesController extends Controller
     public function inbound()
     {
         $box = Box::doesntHave('inboundbox')->pluck('tag_tag','id');
-        return $box;
         $employeeTags = Tag::has('employee')->pluck('tag');
         $employee = [];
         foreach ($employeeTags as $tag) {
@@ -43,6 +42,25 @@ class BoxesController extends Controller
             $employee[$id] = $name;
         }
         return view('box.inboundbox', compact( 'box','employee'));
+    }
+
+    /**
+     * Show the form for creating a new inboundbox.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function outbound()
+    {
+        $box = Box::doesntHave('outboundbox')->pluck('tag_tag','id');
+        $employeeTags = Tag::has('employee')->pluck('tag');
+        $employee = [];
+        foreach ($employeeTags as $tag) {
+            $employees = Employee::where('tag_tag',$tag)->firstOrFail();
+            $name   = $employees->employee_name;
+            $id     = $employees->id;
+            $employee[$id] = $name;
+        }
+        return view('box.outboundbox', compact( 'box','employee'));
     }
 
     /**
