@@ -19,6 +19,7 @@
                             <div class="col-sm-12 form-group">
                             <label for="inputBoxTag">Delete Employee</label>
                               <select type="text" class="form-control" id="" name='' placeholder="Delete Employee" required>
+                              </select>
                             </div>
                           </div>
                           <div class="col-sm-1 bottom-column">

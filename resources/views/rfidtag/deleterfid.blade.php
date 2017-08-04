@@ -19,6 +19,7 @@
                             <div class="col-sm-12 form-group">
                             <label for="inputBoxTag">Delete RFID Tag</label>
                               <select type="text" class="form-control" id="delete-rfid-tag" name='' placeholder="Delete RFID Tag" required>
+                              </select>
                             </div>
                           </div>
                           <div class="col-sm-1 bottom-column">
