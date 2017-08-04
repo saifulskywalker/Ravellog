@@ -69,7 +69,7 @@
         $( "#datepicker1,#datepicker2,#datepicker3" ).datepicker({ dateFormat: 'yy-mm-dd' });
       } );
       $(document).ready(function() {
-        $('#multiple-selected').multiselect();
+        $("#delete-rfid-tag").multiselect();
       } );
     </script>
 
