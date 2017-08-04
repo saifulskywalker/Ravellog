@@ -59,6 +59,15 @@
             transition: max-height 0.2s ease-out;
         }
     </style>
+    <style type="text/css">
+    .multiselect-container {
+        width: 100% !important;
+        text-align: left;
+    }
+     .multiselect {
+        text-align: left;
+    }
+    </style>
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -69,7 +78,11 @@
         $( "#datepicker1,#datepicker2,#datepicker3" ).datepicker({ dateFormat: 'yy-mm-dd' });
       } );
       $(document).ready(function() {
-        $("#delete-rfid-tag").multiselect();
+        $("#multiselect").multiselect({
+            buttonWidth: '100%'
+        });
+        $(".caret").css('float', 'right');
+        $(".caret").css('margin', '8px 0'); 
       } );
     </script>
 

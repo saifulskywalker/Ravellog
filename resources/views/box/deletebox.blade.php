@@ -13,7 +13,7 @@
                         @if (Session::has('message'))
                           <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
-                        <div id="rfid_tag_fields"></div>
+                        <div id="del_tag_fields"></div>
                         <div class="row profile-table">
                           <div class="col-sm-11 profile-table">
                             <div class="col-sm-12 form-group">
