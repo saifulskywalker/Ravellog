@@ -415,7 +415,7 @@
             filterBehavior: 'text',
             includeFilterClearBtn: true,
             preventInputChangeEvent: false,
-            nonSelectedText: '',
+            nonSelectedText: 'None Selected',
             nSelectedText: '',
             allSelectedText: 'All Selected',
             numberDisplayed: 3,
