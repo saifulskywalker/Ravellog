@@ -62,6 +62,7 @@
     <style type="text/css">
     .multiselect-container {
         width: 100% !important;
+        text-align: left;
     }
     </style>
     <script>
@@ -77,6 +78,8 @@
         $("#multiselect").multiselect({
             buttonWidth: '100%'
         });
+        $(".caret").css('float', 'right');
+        $(".caret").css('margin', '8px 0'); 
       } );
     </script>
 
