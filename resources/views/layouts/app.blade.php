@@ -127,7 +127,7 @@
                                 <a href="#">View Boxes</a>
                                 <a href="{{route('boxes.create')}}">Add New Box</a>
                                 <a href="{{route('boxes.inboundbox')}}">Inbound Box</a>
-                                <a href="#">Outbound Box</a>
+                                <a href="{{route('boxes.outboundbox')}}">Outbound Box</a>
                     <!-- if user has admin privilege, this menu will appear -->
                     @if (auth()->user()->privilege == 'admin')
                                 <a href="#">Delete Box</a>

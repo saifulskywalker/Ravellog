@@ -10,6 +10,7 @@ use App\Item;
 use App\Tag;
 use App\Employee;
 use App\InboundBox;
+use App\OutboundBox;
 use Session;
 use Redirect;
 
@@ -199,17 +200,25 @@ class BoxesController extends Controller
 
         // validation for the post data
         if ($validator->fails()) {
-            return Redirect::to('boxes/create')
+            return Redirect::to('inboundbox')
                 ->withErrors($validator)
                 ->withInput();
         } else {
             // store to inbound_boxes column
-            $box = new InboundBox;
-            $box->box_id                = Input::get('box_id');
-            $box->exp_arrival_date      = Input::get('expect_arr_date');
-            $box->arrival_destination   = Input::get('warehouse');
-            $box->employee_id           = Input::get('employee');
-            $box->save();
+            $inbound = Input::get('box_id');
+            $expect_arr_date = Input::get('expect_arr_date');
+            $arrival_destination = Input::get('warehouse');
+            $employee = Input::get('employee');
+
+            foreach ($inbound as $in) {
+                $box = new InboundBox;
+                $box->box_id                = $in;
+                $box->exp_arrival_date      = $expect_arr_date;
+                $box->arrival_destination   = $arrival_destination;
+                $box->employee_id           = $employee;
+                $box->save();
+            }
+            
 
             // redirect
             Session::flash('message', 'Successfully recorded entries for inbound boxes!');
