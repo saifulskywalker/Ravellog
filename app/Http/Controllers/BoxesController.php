@@ -9,6 +9,7 @@ use App\Box;
 use App\Item;
 use App\Tag;
 use App\Employee;
+use App\InboundBox;
 use Session;
 use Redirect;
 
@@ -31,13 +32,8 @@ class BoxesController extends Controller
      */
     public function inbound()
     {
-        $tags = Tag::has('box')->pluck('tag');
-        $box = [];
-        foreach ($tags as $tag) {
-            $box_id  = Box::where('tag_tag',$tag)->firstOrFail();
-            $id = $box_id->id;
-            $box[$id] = $tag;
-        }
+        $box = Box::doesntHave('inboundbox')->pluck('tag_tag','id');
+        return $box;
         $employeeTags = Tag::has('employee')->pluck('tag');
         $employee = [];
         foreach ($employeeTags as $tag) {
@@ -173,7 +169,35 @@ class BoxesController extends Controller
 
     public function inboundboxes(Request $request)
     {
-        //
+        // validate
+        // read more on validation at http://laravel.com/docs/validation
+        $rules = array(
+            'box_id'       => 'required',
+            'expect_arr_date' => 'required|date',
+            'warehouse' => 'required',
+            'employee' => 'required'
+        );
+        $validator = Validator::make(Input::all(), $rules);
+
+        // validation for the post data
+        if ($validator->fails()) {
+            return Redirect::to('boxes/create')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            // store to inbound_boxes column
+            $box = new InboundBox;
+            $box->box_id                = Input::get('box_id');
+            $box->exp_arrival_date      = Input::get('expect_arr_date');
+            $box->arrival_destination   = Input::get('warehouse');
+            $box->employee_id           = Input::get('employee');
+            $box->save();
+
+            // redirect
+            Session::flash('message', 'Successfully recorded entries for inbound boxes!');
+            return Redirect::to('inboundbox');
+        }
+        
     }
 
     /**
