@@ -16,7 +16,7 @@
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxTag">Box Tag</label>
-                            <select type="text" class="form-control" id="inputBoxName" name='box_id' placeholder="Box Tag" required>
+                            <select type="text" class="form-control" id="multiselect" multiple="multiple" name='box_id' placeholder="Box Tag" required>
                             @foreach ($box as $box_id => $tag)
                               <option value="{{$box_id}}">{{$tag}}</option>
                             @endforeach
