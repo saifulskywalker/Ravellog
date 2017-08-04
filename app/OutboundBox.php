@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class OutbondBox extends Model
+class OutboundBox extends Model
 {
     protected $table = 'outbound_boxes';
 

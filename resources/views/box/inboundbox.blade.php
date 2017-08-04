@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-success">
                     @if(Auth::check())
-                    <form class="form-horizontal" style="padding:1em" method="POST" action="{{ route('boxes.store') }}">
+                    <form class="form-horizontal" style="padding:1em" method="POST" action="{{ route('boxes.inboundboxes') }}">
                     {{ csrf_field() }}
                       <fieldset>
                         <legend>Inbound Box</legend>
@@ -16,7 +16,7 @@
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxTag">Box Tag</label>
-                            <select type="text" class="form-control" id="multiselect" multiple="multiple" name='box_id' placeholder="Box Tag" required>
+                            <select type="text" class="form-control" id="multiselect" multiple="multiple" name='box_id[]' placeholder="Box Tag" required>
                             @foreach ($box as $box_id => $tag)
                               <option value="{{$box_id}}">{{$tag}}</option>
                             @endforeach
