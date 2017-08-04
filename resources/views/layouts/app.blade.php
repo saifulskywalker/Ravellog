@@ -64,7 +64,7 @@
     </script>
     <script type='text/javascript'>
       $( function() {
-        $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' });
+        $( "#datepicker1,#datepicker2,#datepicker3" ).datepicker({ dateFormat: 'yy-mm-dd' });
       } );
     </script>
 
@@ -108,7 +108,7 @@
                             <div class="panel-drop">
                                 <a href="#">View Boxes</a>
                                 <a href="{{route('boxes.create')}}">Add New Box</a>
-                                <a href="#">Inbound Box</a>
+                                <a href="{{route('boxes.inboundbox')}}">Inbound Box</a>
                                 <a href="#">Outbound Box</a>
                     <!-- if user has admin privilege, this menu will appear -->
                     @if (auth()->user()->privilege == 'admin')

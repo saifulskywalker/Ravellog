@@ -37,7 +37,7 @@
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxTag">Expire Date</label>
-                            <input type="text" class="form-control" id="datepicker" name='expire' placeholder="Expire Date" required>
+                            <input type="text" class="form-control" id="datepicker1" name='expire' placeholder="Expire Date" required>
                             @if ($errors->has('expire'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('expire') }}</strong>
