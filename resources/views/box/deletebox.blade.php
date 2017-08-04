@@ -9,7 +9,7 @@
                     <form class="form-horizontal" style="padding:1em" method="POST" action="{{ route('boxes.store') }}">
                     {{ csrf_field() }}
                       <fieldset>
-                        <legend>Delete RFID Tag</legend>
+                        <legend>Delete Box</legend>
                         @if (Session::has('message'))
                           <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
@@ -17,13 +17,13 @@
                         <div class="row profile-table">
                           <div class="col-sm-11 profile-table">
                             <div class="col-sm-12 form-group">
-                            <label for="inputBoxTag">Delete RFID Tag</label>
-                              <select type="text" class="form-control" id="delete-rfid-tag" name='' placeholder="Delete RFID Tag" required>
+                            <label for="inputBoxTag">Delete Box</label>
+                              <select type="text" class="form-control" id="" name='' placeholder="Delete Box" required>
                               </select>
                             </div>
                           </div>
                           <div class="col-sm-1 bottom-column">
-                                <button class="btn btn-warning" type="button"  onclick="del_rfid_tag_fields();"> </button>
+                                <button class="btn btn-warning" type="button"  onclick="del_box_fields();"> </button>
                           </div>
                         </div>
                           <br>

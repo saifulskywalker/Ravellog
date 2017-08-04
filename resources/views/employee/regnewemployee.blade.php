@@ -9,21 +9,20 @@
                     <form class="form-horizontal" style="padding:1em" method="POST" action="{{ route('boxes.store') }}">
                     {{ csrf_field() }}
                       <fieldset>
-                        <legend>Delete RFID Tag</legend>
+                        <legend>Register New Employee</legend>
                         @if (Session::has('message'))
                           <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
-                        <div id="rfid_tag_fields"></div>
-                        <div class="row profile-table">
-                          <div class="col-sm-11 profile-table">
-                            <div class="col-sm-12 form-group">
-                            <label for="inputBoxTag">Delete RFID Tag</label>
-                              <select type="text" class="form-control" id="delete-rfid-tag" name='' placeholder="Delete RFID Tag" required>
-                              </select>
-                            </div>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <label for="inputBoxTag">Employee Tag</label>
+                            <input type="text" class="form-control" id="" name='emp-tag' placeholder="Employee Tag" required>
                           </div>
-                          <div class="col-sm-1 bottom-column">
-                                <button class="btn btn-warning" type="button"  onclick="del_rfid_tag_fields();"> </button>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <label for="inputBoxTag">Employee Name</label>
+                            <input type="text" class="form-control" id="" name='emp-name' placeholder="Employee Name" required>
                           </div>
                         </div>
                           <br>
@@ -35,7 +34,6 @@
                       </fieldset>
                     </form>
                     @endif
-
             </div>
             @if(Auth::guest())
               <a href="/login" class="btn btn-warning">You need to login to access this page</a>
