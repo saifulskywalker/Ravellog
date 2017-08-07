@@ -18,7 +18,7 @@
                           <div class="col-sm-11 profile-table">
                             <div class="col-sm-12 form-group">
                             <label for="inputBoxTag">Delete Box</label>
-                              <select type="text" class="form-control" id="" name='' placeholder="Delete Box" required>
+                              <select type="text" class="form-control" id="multiselect" multiple="multiple" name='' placeholder="Delete Box" required>
                               </select>
                             </div>
                           </div>
