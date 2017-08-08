@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Collection;
 use App\Box;
 use App\Item;
 use App\Tag;
@@ -52,7 +53,9 @@ class BoxesController extends Controller
      */
     public function outbound()
     {
-        $box = Box::doesntHave('outboundbox')->pluck('tag_tag','id');
+        $inbox = Box::doesntHave('outboundbox')->pluck('tag_tag','id');
+        $outbox = Box::has('inboundbox')->pluck('tag_tag','id');
+        $box = $inbox->intersect($outbox);
         $employeeTags = Tag::has('employee')->pluck('tag');
         $employee = [];
         foreach ($employeeTags as $tag) {
@@ -71,7 +74,9 @@ class BoxesController extends Controller
      */
     public function create()
     {
-        $tags = Tag::doesntHave('box')->pluck('tag');
+        $boxtag = Tag::doesntHave('box')->pluck('tag');
+        $employeetag = Tag::doesntHave('employee')->pluck('tag');
+        $tags = $boxtag->intersect($employeetag);
         return view('box.createbox', compact('tags'));
     }
 
