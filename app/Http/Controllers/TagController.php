@@ -23,7 +23,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('rfidtag.createrfid');
     }
 
     /**
@@ -81,4 +81,15 @@ class TagController extends Controller
     {
         //
     }
+    public function delete()
+    {
+        return view('rfidtag.deleterfid');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
 }
