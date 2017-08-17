@@ -9,7 +9,7 @@
                     
                     {{ csrf_field() }}
                       <fieldset>
-                        <legend>View Boxes</legend>
+                        <legend style="padding-left:1em; padding-top:0.5em;">View Boxes</legend>
                         @if (Session::has('message'))
                           <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
@@ -24,12 +24,12 @@
                             </thread>
 
                             <tbody>
-                              @foreach()
+                              @foreach($boxes as $box)
                                 <tr>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
+                                  <td>{{$box->tag_tag}}</td>
+                                  <td>{{$box->warehouse}}</td>
+                                  <td>{{$box->category}}</td>
+                                  <td>{{$box->expire_date}}</td>
                                   <td></td>
                                 </tr>
                               @endforeach
@@ -37,7 +37,7 @@
                           </table>
 
                           <div class="text-right">
-                            {!! $boxpage->links(); !!}
+                            {!! $boxes->links(); !!}
                           </div>    
                         </div>
                       </fieldset>
