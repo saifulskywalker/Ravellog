@@ -149,7 +149,6 @@
                             <div class="panel-drop">
                                 <a href="{{route('employee.index')}}">View Employee List</a>
                                 <a href="{{route('employee.create')}}">Register New Employee</a>
-                                <a href="#">Update Employee</a>
                                 <a href="{{route('employee.delete')}}">Delete Employee</a>
                             </div>
                         
