@@ -20,3 +20,17 @@ Route::get('inboundbox','BoxesController@inbound')->name('boxes.inboundbox');
 Route::post('inboundboxes','BoxesController@inboundboxes')->name('boxes.inboundboxes');
 Route::get('outboundbox','BoxesController@outbound')->name('boxes.outboundbox');
 Route::post('outboundboxes','BoxesController@outboundboxes')->name('boxes.outboundboxes');
+
+Route::get('deletebox','BoxesController@delete')->name('boxes.delete');
+
+Route::resource('tag','TagController',['except' => [
+		'update','edit'
+	]]);
+Route::get('tagdelete','TagController@delete')->name('tag.delete');
+
+Route::resource('asset','AssetController',['except' => [
+		'update','destroy','edit'
+	]]);
+
+Route::resource('employee','EmployeesController');
+Route::get('deletemployee','EmployeesController@delete')->name('employee.delete');
