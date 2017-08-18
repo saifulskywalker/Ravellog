@@ -9,7 +9,7 @@
                     
                     {{ csrf_field() }}
                       <fieldset>
-                        <legend>View Employee List</legend>
+                        <legend style="padding-left:1em; padding-top:0.5em;">View Employee List</legend>
                         @if (Session::has('message'))
                           <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
@@ -21,17 +21,17 @@
                             </thread>
 
                             <tbody>
-                              @foreach()
+                              @foreach($employees as $employee)
                                 <tr>
-                                  <td></td>
-                                  <td></td>
+                                  <td>{{$employee->tag_tag}}</td>
+                                  <td>{{$employee->employee_name}}</td>
                                 </tr>
                               @endforeach
                             </tbody>
                           </table>
 
                           <div class="text-right">
-                            {!! $xxxx->links(); !!}
+                            {!! $employees->links(); !!}
                           </div>    
                         </div>
                       </fieldset>

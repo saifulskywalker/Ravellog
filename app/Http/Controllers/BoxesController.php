@@ -24,7 +24,8 @@ class BoxesController extends Controller
      */
     public function index()
     {
-        //
+        $boxes = Box::orderBy('id', 'asc')->paginate(10);
+        return view('box.viewbox')->withBoxes($boxes);
     }
 
     /**
@@ -290,4 +291,15 @@ class BoxesController extends Controller
     {
         //
     }
+    public function delete()
+    {
+        return view('box.deletebox');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
 }

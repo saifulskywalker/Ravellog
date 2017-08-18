@@ -9,7 +9,7 @@
                     
                     {{ csrf_field() }}
                       <fieldset>
-                        <legend>View Assets</legend>
+                        <legend style="padding-left:1em; padding-top:0.5em;">View Assets</legend>
                         @if (Session::has('message'))
                           <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
@@ -21,17 +21,17 @@
                             </thread>
 
                             <tbody>
-                              @foreach()
+                              @foreach($assets as $asset)
                                 <tr>
-                                  <td></td>
-                                  <td></td>
+                                  <td>{{$asset->item_name}}</td>
+                                  <td>{{$asset->quantity}}</td>
                                 </tr>
                               @endforeach
                             </tbody>
                           </table>
 
                           <div class="text-right">
-                            {!! $xxxxx->links(); !!}
+                            {!! $assets->links(); !!}
                           </div>    
                         </div>
                       </fieldset>

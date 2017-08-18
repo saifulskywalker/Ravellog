@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Employee;
+use App\Http\Controllers\Controller;
+use App\Asset;
 
-class EmployeesController extends Controller
+class AssetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        $employees = Employee::orderBy('id', 'asc')->paginate(10);
-        return view('employee.viewemployee')->withEmployees($employees);
+        $assets = Asset::orderBy('id', 'desc')->paginate(5);
+        return view('asset.viewassets')->withAssets($assets);
     }
 
     /**
@@ -25,7 +26,7 @@ class EmployeesController extends Controller
      */
     public function create()
     {
-        return view('employee.regnewemployee');
+        return view('asset.regnewasset');
     }
 
     /**
@@ -72,6 +73,7 @@ class EmployeesController extends Controller
     {
         //
     }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -81,8 +83,5 @@ class EmployeesController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function delete(){
-        return view('employee.delemployee');
     }
 }

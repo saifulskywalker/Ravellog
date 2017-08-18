@@ -23,7 +23,7 @@
                             </div>
                           </div>
                           <div class="col-sm-1 bottom-column">
-                                <button class="btn btn-warning" type="button"  onclick="del_box_fields();"> </button>
+                                <button class="btn btn-danger" type="button"  onclick="del_box_fields();"><span class="glyphicon glyphicon-minus"></span></button>
                           </div>
                         </div>
                           <br>
