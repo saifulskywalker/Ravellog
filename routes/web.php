@@ -20,9 +20,11 @@ Route::get('inboundbox','BoxesController@inbound')->name('boxes.inboundbox');
 Route::post('inboundboxes','BoxesController@inboundboxes')->name('boxes.inboundboxes');
 Route::get('outboundbox','BoxesController@outbound')->name('boxes.outboundbox');
 Route::post('outboundboxes','BoxesController@outboundboxes')->name('boxes.outboundboxes');
-<<<<<<< HEAD
 
-<<<<<<< HEAD
+Route::post('api/v1/store/entrancegate','APIController@entrancegate');
+Route::post('api/v1/store/exitgate','APIController@exitgate');
+Route::post('api/v1/store/position','APIController@position');
+
 Route::get('deletebox','BoxesController@delete')->name('boxes.delete');
 
 Route::resource('tag','TagController',['except' => [
@@ -36,10 +38,3 @@ Route::resource('asset','AssetController',['except' => [
 
 Route::resource('employee','EmployeesController');
 Route::get('deletemployee','EmployeesController@delete')->name('employee.delete');
-=======
-Route::post('api/v1/store/entrancegate','APIController@entrancegate');
-Route::post('api/v1/store/exitgate','APIController@exitgate');
-Route::post('api/v1/store/position','APIController@position');
->>>>>>> master
-=======
->>>>>>> ccc7f96be56426200b4f1f6a5ab1cf691c6c05fa
