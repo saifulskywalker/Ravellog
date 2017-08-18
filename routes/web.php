@@ -24,3 +24,17 @@ Route::post('outboundboxes','BoxesController@outboundboxes')->name('boxes.outbou
 Route::post('api/v1/store/entrancegate','APIController@entrancegate');
 Route::post('api/v1/store/exitgate','APIController@exitgate');
 Route::post('api/v1/store/position','APIController@position');
+
+Route::get('deletebox','BoxesController@delete')->name('boxes.delete');
+
+Route::resource('tag','TagController',['except' => [
+		'update','edit'
+	]]);
+Route::get('tagdelete','TagController@delete')->name('tag.delete');
+
+Route::resource('asset','AssetController',['except' => [
+		'update','destroy','edit'
+	]]);
+
+Route::resource('employee','EmployeesController');
+Route::get('deletemployee','EmployeesController@delete')->name('employee.delete');
