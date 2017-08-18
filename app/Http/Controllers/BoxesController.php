@@ -24,7 +24,7 @@ class BoxesController extends Controller
      */
     public function index()
     {
-        $boxes = Box::orderBy('id', 'asc')->paginate(10);
+        $boxes = Box::orderBy('expire_date', 'asc')->paginate(10);
         return view('box.viewbox')->withBoxes($boxes);
     }
 
