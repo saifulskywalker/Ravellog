@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-success">
                     @if(Auth::check())
-                    <form class="form-horizontal" style="padding:1em" method="POST" action="{{ route('boxes.store') }}">
+                    <form class="form-horizontal" style="padding:1em" method="POST" action="{{ route('boxes.outboundboxes') }}">
                     {{ csrf_field() }}
                       <fieldset>
                         <legend>Outbound Box</legend>
@@ -37,7 +37,7 @@
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxTag">Departure Destination</label>
-                            <input type="text" class="form-control" id="" name='warehouse' placeholder="Departure Destination" required>
+                            <input type="text" class="form-control" id="" name='destination' placeholder="Departure Destination" required>
                           </div>
                         </div>
                         <div class="form-group">

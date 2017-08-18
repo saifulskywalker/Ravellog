@@ -21,6 +21,7 @@ Route::post('inboundboxes','BoxesController@inboundboxes')->name('boxes.inboundb
 Route::get('outboundbox','BoxesController@outbound')->name('boxes.outboundbox');
 Route::post('outboundboxes','BoxesController@outboundboxes')->name('boxes.outboundboxes');
 
+<<<<<<< HEAD
 Route::get('deletebox','BoxesController@delete')->name('boxes.delete');
 
 Route::resource('tag','TagController',['except' => [
@@ -34,3 +35,8 @@ Route::resource('asset','AssetController',['except' => [
 
 Route::resource('employee','EmployeesController');
 Route::get('deletemployee','EmployeesController@delete')->name('employee.delete');
+=======
+Route::post('api/v1/store/entrancegate','APIController@entrancegate');
+Route::post('api/v1/store/exitgate','APIController@exitgate');
+Route::post('api/v1/store/position','APIController@position');
+>>>>>>> master
