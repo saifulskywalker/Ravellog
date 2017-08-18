@@ -242,7 +242,42 @@ class BoxesController extends Controller
 
     public function outboundboxes(Request $request)
     {
-        //
+        // validate
+        // read more on validation at http://laravel.com/docs/validation
+        $rules = array(
+            'box_id'       => 'required',
+            'expect_dep_date' => 'required|date',
+            'destination' => 'required',
+            'employee' => 'required'
+        );
+        $validator = Validator::make(Input::all(), $rules);
+
+        // validation for the post data
+        if ($validator->fails()) {
+            return Redirect::to('outboundbox')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            // store to inbound_boxes column
+            $outbound = Input::get('box_id');
+            $expect_dep_date = Input::get('expect_dep_date');
+            $depart_destination = Input::get('destination');
+            $employee = Input::get('employee');
+
+            foreach ($outbound as $out) {
+                $box = new OutboundBox;
+                $box->box_id                = $out;
+                $box->exp_depart_date      = $expect_dep_date;
+                $box->depart_destination   = $depart_destination;
+                $box->employee_id           = $employee;
+                $box->save();
+            }
+            
+
+            // redirect
+            Session::flash('message', 'Successfully recorded entries for outbound boxes!');
+            return Redirect::to('outboundbox');
+        }
     }
 
     /**
