@@ -115,8 +115,8 @@
                         <li>
                         <a href ="#" class="accordion">RFID Tag Management</a>
                             <div class="panel-drop">
-                                <a href="#">Add RFID Tag</a>
-                                <a href="#">Delete RFID Tag</a>
+                                <a href="{{route('tag.create')}}">Add RFID Tag</a>
+                                <a href="{{route('tag.delete')}}">Delete RFID Tag</a>
                             </div>
                         </li>
                     @endif
@@ -124,13 +124,13 @@
                     <li>
                         <a href ="#" class="accordion">Box Management</a>
                             <div class="panel-drop">
-                                <a href="#">View Boxes</a>
+                                <a href="{{route('boxes.index')}}">View Boxes</a>
                                 <a href="{{route('boxes.create')}}">Add New Box</a>
                                 <a href="{{route('boxes.inboundbox')}}">Inbound Box</a>
                                 <a href="{{route('boxes.outboundbox')}}">Outbound Box</a>
                     <!-- if user has admin privilege, this menu will appear -->
                     @if (auth()->user()->privilege == 'admin')
-                                <a href="#">Delete Box</a>
+                                <a href="{{route('boxes.delete')}}">Delete Box</a>
                     @endif
                     <!-- end of admin only menu -->
                             </div>
@@ -139,18 +139,17 @@
                     <li>
                         <a href ="#" class="accordion">Asset Management</a>
                             <div class="panel-drop">
-                                <a href="#">View Assets</a>
-                                <a href="#">Register New Asset</a>
+                                <a href="{{route('asset.index')}}">View Assets</a>
+                                <a href="{{route('asset.create')}}">Register New Asset</a>
                             </div>
                         
                     </li>
                     <li>
                         <a href ="#" class="accordion">Employees</a>
                             <div class="panel-drop">
-                                <a href="#">View Employee List</a>
-                                <a href="#">Register New Employee</a>
-                                <a href="#">Update Employee</a>
-                                <a href="#">Delete Employee</a>
+                                <a href="{{route('employee.index')}}">View Employee List</a>
+                                <a href="{{route('employee.create')}}">Register New Employee</a>
+                                <a href="{{route('employee.delete')}}">Delete Employee</a>
                             </div>
                         
                     </li>
