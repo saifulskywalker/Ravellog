@@ -3,12 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tag extends Model
 { // or null
 
 	protected $primaryKey = 'tag';
     public $incrementing = false;
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
 
     public function employee()
     {
