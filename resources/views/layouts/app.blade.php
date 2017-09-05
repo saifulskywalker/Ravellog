@@ -16,7 +16,7 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="{{ asset('css/simple-sidebar.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/collapsible-sidebar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-multiselect.css') }}" rel="stylesheet">
