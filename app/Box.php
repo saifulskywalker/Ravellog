@@ -22,4 +22,8 @@ class Box extends Model
     {
     	return $this->hasMany(OutboundBox::class);
     }
+    public function warehouse()
+    {
+        return $this->belongsTo(Warehouse::class);
+    }
 }
