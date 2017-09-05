@@ -108,7 +108,7 @@
                     </a>
                 </li>
                 <li class="sidebar-profile">
-                    <a href="#"><span style="padding-right: 10px" class="glyphicon glyphicon-user"></span> User Name</a>
+                    <a href="#"><span style="padding-right: 10px" class="glyphicon glyphicon-user"></span>{{auth()->user()->name}}</a>
                 </li>
                 <li class="sidebar-menu">
                     MAIN MENU
@@ -238,6 +238,30 @@
            function remove_item_fields(rid) {
                $('.removeclass'+rid).remove()
                room--;
+           }
+    </script>
+
+        <script type="text/javascript">
+        var rfid_tag = 1;
+        var limit = 20;
+        function rfid_tag_fields() {
+            if (rfid_tag == limit)  {
+                alert("You have reached the limit of adding tags");
+            }
+            else {
+                rfid_tag++;
+                var objTo = document.getElementById('rfid_tag_fields')
+                var divtest = document.createElement("div");
+                divtest.setAttribute("class", "removeclass"+rfid_tag);
+                var rdiv = 'removeclass'+rfid_tag;
+                divtest.innerHTML = '<div class="row profile-table"><div class="col-sm-11 profile-table"><div class="col-sm-12 form-group"><label for="inputBoxTag">RFID Tag</label><input type="text" class="form-control" id="rfid-tag" name="rfid_tag[]" value="" placeholder="RFID Tag" required></div></div><div class="col-sm-1 bottom-column"><button class="btn btn-danger" type="button"  onclick="remove_tag_fields('+rfid_tag+');"> <span class="glyphicon glyphicon-minus"></span> </button></div></div>';
+                
+                objTo.appendChild(divtest)
+            }
+        }
+           function remove_tag_fields(rid) {
+               $('.removeclass'+rid).remove()
+               rfid_tag--;
            }
     </script>
     <script>

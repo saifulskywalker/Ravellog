@@ -14,19 +14,15 @@
                           <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
                         <div id="rfid_tag_fields"></div>
-                        <div class="row profile-table">
-                          <div class="col-sm-11 profile-table">
+                        <div class="form-group">
+                          <div class="col-md-12">
                             <div class="col-sm-12 form-group">
                             <label for="inputBoxTag">Delete Employee</label>
                               <select type="text" class="form-control" id="multiselect" multiple="multiple" name='' placeholder="Delete Employee" required>
                               </select>
                             </div>
                           </div>
-                          <div class="col-sm-1 bottom-column">
-                                <button class="btn btn-danger" type="button"  onclick="del_employee_fields();"><span class="glyphicon glyphicon-minus"></span></button>
-                          </div>
                         </div>
-                          <br>
                         <div class="form-group">
                           <div class="col-sm-6">
                             <button type="submit" class="btn btn-primary">Submit</button>
