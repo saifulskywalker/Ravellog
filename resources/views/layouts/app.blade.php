@@ -108,7 +108,7 @@
                     </a>
                 </li>
                 <li class="sidebar-profile">
-                    <a href="#"><span style="padding-right: 10px" class="glyphicon glyphicon-user"></span> User Name</a>
+                    <a href="#"><span style="padding-right: 10px" class="glyphicon glyphicon-user"></span>{{auth()->user()->name}}</a>
                 </li>
                 <li class="sidebar-menu">
                     MAIN MENU
