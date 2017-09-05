@@ -107,13 +107,26 @@
                         Ravellog
                     </a>
                 </li>
+                <li class="sidebar-profile">
+                    <a href="#"><span style="padding-right: 10px" class="glyphicon glyphicon-user"></span> User Name</a>
+                </li>
+                <li class="sidebar-menu">
+                    MAIN MENU
+                </li>
                 @if (Auth::guest())
                     <li><a href="{{ route('login') }}">Login</a></li>
                 @else
+                    <!-- for all user and admin, can view dashboard layout -->
+                    <li>
+                        <a href="#">Dashboard</a>
+                    </li>
                     <!-- if user has admin privilege, this menu will appear -->
                     @if (auth()->user()->privilege == 'admin')
                         <li>
-                        <a href ="#" class="accordion">RFID Tag Management</a>
+                        <a href ="#" class="accordion">RFID Tag Management
+                            <span style="padding-top: 0.8em; padding-right: 1em;" class="glyphicon glyphicon-menu-down pull-right">
+                            </span>
+                        </a>
                             <div class="panel-drop">
                                 <a href="{{route('tag.create')}}">Add RFID Tag</a>
                                 <a href="{{route('tag.delete')}}">Delete RFID Tag</a>
@@ -122,7 +135,10 @@
                     @endif
                     <!-- end of admin only menu -->
                     <li>
-                        <a href ="#" class="accordion">Box Management</a>
+                        <a href ="#" class="accordion">Box Management
+                            <span style="padding-top: 0.8em; padding-right: 1em;" class="glyphicon glyphicon-menu-down pull-right">
+                            </span>
+                        </a>
                             <div class="panel-drop">
                                 <a href="{{route('boxes.index')}}">View Boxes</a>
                                 <a href="{{route('boxes.create')}}">Add New Box</a>
@@ -137,7 +153,10 @@
                         
                     </li>
                     <li>
-                        <a href ="#" class="accordion">Asset Management</a>
+                        <a href ="#" class="accordion">Asset Management
+                            <span style="padding-top: 0.8em; padding-right: 1em;" class="glyphicon glyphicon-menu-down pull-right">
+                            </span>
+                        </a>
                             <div class="panel-drop">
                                 <a href="{{route('asset.index')}}">View Assets</a>
                                 <a href="{{route('asset.create')}}">Register New Asset</a>
@@ -145,7 +164,10 @@
                         
                     </li>
                     <li>
-                        <a href ="#" class="accordion">Employees</a>
+                        <a href ="#" class="accordion">Employees
+                            <span style="padding-top: 0.8em; padding-right: 1em;" class="glyphicon glyphicon-menu-down pull-right">
+                            </span>
+                        </a>
                             <div class="panel-drop">
                                 <a href="{{route('employee.index')}}">View Employee List</a>
                                 <a href="{{route('employee.create')}}">Register New Employee</a>
