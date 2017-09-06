@@ -195,14 +195,21 @@
         </div>
         <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
+        <!-- Header Content -->
+        <div id="header-content-wrapper">
             <div class="container-fluid">
-                <div><a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></a></div><br>
+                <div><a href="#menu-toggle" class="btn" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></a></div><br>
+            </div>
+        </div>
+        <!-- /#header-content-wrapper -->
+
+        <!-- Body Content -->
+        <div id="body-content-wrapper">
+            <div class="container-fluid">
             @yield('content')
             </div>
         </div>
-        <!-- /#page-content-wrapper -->
+        <!-- /#body-content-wrapper -->
 
     </div>
     <!-- /#wrapper -->
