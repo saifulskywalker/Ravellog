@@ -47,6 +47,22 @@ class BoxesController extends Controller
         return view('box.inboundbox', compact( 'box','employee'));
     }
 
+    public function moving()
+    {
+        $box = Box::doesntHave('inboundbox')->pluck('tag_tag','id');
+        $employeeTags = Tag::has('employee')->pluck('tag');
+        $trucks = Truck::All();
+        $employee = [];
+        foreach ($employeeTags as $tag) {
+            $employees = Employee::where('tag_tag',$tag)->firstOrFail();
+            $name   = $employees->employee_name;
+            $id     = $employees->id;
+            $employee[$id] = $name;
+        }
+        return view('box.towarehousebox', compact( 'box','employee'));
+    }
+
+
     /**
      * Show the form for creating a new inboundbox.
      *
