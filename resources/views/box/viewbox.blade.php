@@ -34,7 +34,7 @@
                                   <td>{{$box->location}}</td>
                                   <td></td>
                                   <td>{{$box->expire_date}}</td>
-                                  <td></td>
+                                  <td>{{$box->barang}}</td>
                                 </tr>
                               @endforeach
                             </tbody>

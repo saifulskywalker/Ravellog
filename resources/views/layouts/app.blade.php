@@ -107,18 +107,16 @@
                         Ravellog
                     </a>
                 </li>
-                @if (Auth::check())
-                <li class="sidebar-profile">
-                    <a href="#"><span style="padding-right: 10px" class="glyphicon glyphicon-user"></span>{{auth()->user()->name}}</a>
-                </li>
-                @endif
-                <li class="sidebar-menu">
-                    MAIN MENU
-                </li>
                 @if (Auth::guest())
                     <li><a href="{{ route('login') }}">Login</a></li>
                 @else
                     <!-- for all user and admin, can view dashboard layout -->
+                    <li class="sidebar-profile">
+                        <a href="#"><span style="padding-right: 10px" class="glyphicon glyphicon-user"></span>{{auth()->user()->name}}</a>
+                    </li>
+                    <li class="sidebar-menu">
+                        MAIN MENU
+                    </li>
                     <li>
                         <a href="#">Dashboard</a>
                     </li>
