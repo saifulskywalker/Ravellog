@@ -107,9 +107,11 @@
                         Ravellog
                     </a>
                 </li>
+                @if (Auth::check())
                 <li class="sidebar-profile">
                     <a href="#"><span style="padding-right: 10px" class="glyphicon glyphicon-user"></span>{{auth()->user()->name}}</a>
                 </li>
+                @endif
                 <li class="sidebar-menu">
                     MAIN MENU
                 </li>
