@@ -12,6 +12,10 @@ use App\Tag;
 use App\Employee;
 use App\InboundBox;
 use App\OutboundBox;
+use App\Truck;
+use App\Warehouse;
+use App\Tracking;
+use App\MovingBox;
 use Session;
 use Redirect;
 
