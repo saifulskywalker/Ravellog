@@ -12,10 +12,6 @@ use App\Tag;
 use App\Employee;
 use App\InboundBox;
 use App\OutboundBox;
-use App\Truck;
-use App\Tracking;
-use App\Warehouse;
-use App\MovngBox;
 use Session;
 use Redirect;
 
@@ -28,7 +24,7 @@ class BoxesController extends Controller
      */
     public function index()
     {
-        $boxes = Box::orderBy('expire_date', 'asc')->paginate(15);
+        $boxes = Box::orderBy('expire_date', 'asc')->paginate(10);
         return view('box.viewbox')->withBoxes($boxes);
     }
 
@@ -49,21 +45,6 @@ class BoxesController extends Controller
             $employee[$id] = $name;
         }
         return view('box.inboundbox', compact( 'box','employee'));
-    }
-
-        public function moving()
-    {
-        $box = Box::doesntHave('inboundbox')->pluck('tag_tag','id');
-        $employeeTags = Tag::has('employee')->pluck('tag');
-        $trucks = Truck::All();
-        $employee = [];
-        foreach ($employeeTags as $tag) {
-            $employees = Employee::where('tag_tag',$tag)->firstOrFail();
-            $name   = $employees->employee_name;
-            $id     = $employees->id;
-            $employee[$id] = $name;
-        }
-        return view('box.towarehousebox', compact( 'box','employee'));
     }
 
     /**
