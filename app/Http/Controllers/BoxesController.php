@@ -18,6 +18,7 @@ use App\Tracking;
 use App\MovingBox;
 use Session;
 use Redirect;
+use DB;
 
 class BoxesController extends Controller
 {
@@ -28,7 +29,9 @@ class BoxesController extends Controller
      */
     public function index()
     {
-        $boxes = Box::orderBy('expire_date', 'asc')->paginate(10);
+        // $boxes = Box::orderBy('expire_date', 'asc')->paginate(10);
+
+        $boxes = DB::table('boxes')->join(DB::raw("(select box_id, GROUP_CONCAT(concat(name,' = ',quantity) SEPARATOR '\n ') as barang from items group by box_id) as F"),'F.box_id','=','boxes.id')->paginate(10);
         return view('box.viewbox')->withBoxes($boxes);
     }
 
@@ -41,29 +44,17 @@ class BoxesController extends Controller
     {
         $box = Box::doesntHave('inboundbox')->pluck('tag_tag','id');
         $employeeTags = Tag::has('employee')->pluck('tag');
-        $employee = [];
-        foreach ($employeeTags as $tag) {
-            $employees = Employee::where('tag_tag',$tag)->firstOrFail();
-            $name   = $employees->employee_name;
-            $id     = $employees->id;
-            $employee[$id] = $name;
-        }
+        $employee = Employee::pluck('employee_name','tag_tag');
         return view('box.inboundbox', compact( 'box','employee'));
     }
 
     public function moving()
     {
-        $box = Box::doesntHave('inboundbox')->pluck('tag_tag','id');
-        $employeeTags = Tag::has('employee')->pluck('tag');
-        $trucks = Truck::All();
-        $employee = [];
-        foreach ($employeeTags as $tag) {
-            $employees = Employee::where('tag_tag',$tag)->firstOrFail();
-            $name   = $employees->employee_name;
-            $id     = $employees->id;
-            $employee[$id] = $name;
-        }
-        return view('box.towarehousebox', compact( 'box','employee'));
+        $boxes = Box::doesntHave('inboundbox')->get();
+        $trucks = Truck::pluck('name','id');
+        $employees = Employee::pluck('employee_name','tag_tag');
+        $warehouses = Warehouse::all();
+        return view('box.towarehousebox', compact( 'boxes','employees','warehouses','trucks'));
     }
 
 
@@ -78,13 +69,7 @@ class BoxesController extends Controller
         $outbox = Box::has('inboundbox')->pluck('tag_tag','id');
         $box = $inbox->intersect($outbox);
         $employeeTags = Tag::has('employee')->pluck('tag');
-        $employee = [];
-        foreach ($employeeTags as $tag) {
-            $employees = Employee::where('tag_tag',$tag)->firstOrFail();
-            $name   = $employees->employee_name;
-            $id     = $employees->id;
-            $employee[$id] = $name;
-        }
+        $employee = Employee::pluck('employee_name','tag_tag');
         return view('box.outboundbox', compact( 'box','employee'));
     }
 
@@ -98,7 +83,10 @@ class BoxesController extends Controller
         $boxtag = Tag::doesntHave('box')->pluck('tag');
         $employeetag = Tag::doesntHave('employee')->pluck('tag');
         $tags = $boxtag->intersect($employeetag);
-        return view('box.createbox', compact('tags'));
+        $employeeTags = Tag::has('employee')->pluck('tag');
+        $employee = Employee::pluck('employee_name','id');
+        $warehouse = Warehouse::pluck('name','id');
+        return view('box.createbox', compact('tags','warehouse','employee'));
     }
 
     /**
@@ -113,8 +101,11 @@ class BoxesController extends Controller
         // read more on validation at http://laravel.com/docs/validation
         $rules = array(
             'tag'       => 'required',
-            'category'      => 'required',
+            'name'      => 'required',
+            'warehouse'      => 'required',
+            'arrival'      => 'required|date',
             'expire' => 'required|date',
+            'employee'      => 'required',
             'item_name' => 'required',
             'quantity' => 'required'
         );
@@ -129,7 +120,7 @@ class BoxesController extends Controller
             // store to boxes column
             $box = new Box;
             $box->tag_tag       = Input::get('tag');
-            $box->category      = Input::get('category');
+            $box->name      = Input::get('name');
             $box->expire_date   = Input::get('expire');
             $box->save();
 
@@ -158,12 +149,24 @@ class BoxesController extends Controller
                 if ($item != 'x') {
                     $items = new Item;
                     $items->box_id     = $box_id;
-                    $items->asset_id   = $item;
+                    $items->name   = $item;
                     $items->quantity   = $quantity;
                     $items->save();  
                 }
                 
             }
+
+            //store box as inbound box
+            $expect_arr_date = Input::get('arrival');
+            $arrival_destination = Input::get('warehouse');
+            $employee = Input::get('employee');
+                
+                $inbox = new InboundBox;
+                $inbox->box_id                = $box_id;
+                $inbox->exp_arrival_date      = $expect_arr_date;
+                $inbox->arrival_destination   = $arrival_destination;
+                $inbox->employee_id           = $employee;
+                $inbox->save();
 
             // redirect
             Session::flash('message', 'Successfully created box!');

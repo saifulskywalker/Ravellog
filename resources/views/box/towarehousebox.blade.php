@@ -17,7 +17,17 @@
                           <div class="col-md-12">
                             <label for="inputBoxTag">Boxes</label>
                             <select type="text" class="form-control" id="multiselect" multiple="multiple" name='box_id[]' placeholder="Boxes" required>
-
+                            @if (auth()->user()->privilege == 'admin')
+                              @foreach ($boxes as $box)
+                                <option value="{{$box->id}}">{{$box->tag_tag}}</option>
+                              @endforeach
+                            @else
+                              @foreach ($boxes as $box)
+                                @if ($box->warehouse == auth()->user()->privilege)
+                                  <option value="{{$box->id}}">{{$box->tag_tag}}</option>
+                                @endif
+                              @endforeach
+                            @endif
                             </select>
                           </div>
                         </div>
@@ -25,6 +35,17 @@
                           <div class="col-md-12">
                             <label for="inputBoxTag">Departure From</label>
                             <select type="text" class="form-control" id="" name='' placeholder="Departure From" required>
+                            @if (auth()->user()->privilege == 'admin')
+                              @foreach ($warehouses as $warehouse)
+                                <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
+                              @endforeach
+                            @else
+                              @foreach ($warehouses as $warehouse)
+                                @if ($warehouse->id == auth()->user()->privilege)
+                                  <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
+                                @endif
+                              @endforeach
+                            @endif
                             
 
                             </select>
@@ -34,8 +55,17 @@
                           <div class="col-md-12">
                             <label for="inputBoxTag">Arrival Destination</label>
                             <select type="text" class="form-control" id="" name='' placeholder="Arrival Destination" required>
-                            
-                            
+                            @if (auth()->user()->privilege == 'admin')
+                              @foreach ($warehouses as $warehouse)
+                                <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
+                              @endforeach
+                            @else
+                              @foreach ($warehouses as $warehouse)
+                                @if ($warehouse->id != auth()->user()->privilege)
+                                  <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
+                                @endif
+                              @endforeach
+                            @endif
                             </select>
                           </div>
                         </div>
@@ -43,9 +73,9 @@
                           <div class="col-md-12">
                             <label for="inputBoxTag">Expected Departure Date</label>
                             <input type="text" class="form-control" id="datepicker1" name='expect_dep_date' placeholder="Expected Departure Date" required>
-                            @if ($errors->has('expire'))
+                            @if ($errors->has('expect_dep_date'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('expire') }}</strong>
+                                        <strong>{{ $errors->first('expect_dep_date') }}</strong>
                                     </span>
                             @endif
                           </div>
@@ -53,10 +83,10 @@
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxTag">Expected Arrival Date</label>
-                            <input type="text" class="form-control" id="datepicker1" name='expect_arr_date' placeholder="Expected Arrival Date" required>
-                            @if ($errors->has('expire'))
+                            <input type="text" class="form-control" id="datepicker2" name='expect_arr_date' placeholder="Expected Arrival Date" required>
+                            @if ($errors->has('expect_arr_date'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('expire') }}</strong>
+                                        <strong>{{ $errors->first('expect_arr_date') }}</strong>
                                     </span>
                             @endif
                           </div>
@@ -65,7 +95,9 @@
                           <div class="col-md-12">
                             <label for="inputBoxTag">Truck</label>
                             <select type="text" class="form-control" id="" name='' placeholder="Truck" required>
-                            
+                            @foreach ($trucks as $id => $name)
+                              <option value="{{$id}}">{{$name}}</option>
+                            @endforeach
                             
                             </select>
                           </div>
@@ -74,7 +106,7 @@
                           <div class="col-md-12">
                             <label for="inputBoxTag">Person in Charge</label>
                             <select type="text" class="form-control" id="" name='employee' placeholder="Person in Charge" required>
-                            @foreach ($employee as $id => $name)
+                            @foreach ($employees as $id => $name)
                               <option value="{{$id}}">{{$name}}</option>
                             @endforeach
                             </select>
