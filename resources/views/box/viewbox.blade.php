@@ -17,9 +17,11 @@
                           <table class="table">
                             <thread>
                                 <th>Box Tag</th>
+                                <th>Box Name</th>
                                 <th>Warehouse</th>
-                                <th>Category</th>
-                                <th>Expired</th>
+                                <th>Position</th>
+                                <th>Arrival Date</th>
+                                <th>Expire Date</th>
                                 <th>Item</th>
                             </thread>
 
@@ -27,8 +29,10 @@
                               @foreach($boxes as $box)
                                 <tr>
                                   <td>{{$box->tag_tag}}</td>
+                                  <td></td>
                                   <td>{{$box->warehouse}}</td>
-                                  <td>{{$box->category}}</td>
+                                  <td>{{$box->location}}</td>
+                                  <td></td>
                                   <td>{{$box->expire_date}}</td>
                                   <td></td>
                                 </tr>
