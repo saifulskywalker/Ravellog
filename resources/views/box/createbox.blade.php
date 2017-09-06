@@ -25,11 +25,30 @@
                         </div>
                         <div class="form-group">
                           <div class="col-md-12">
-                            <label for="inputBoxTag">Box Category</label>
-                            <input type="text" class="form-control" id="inputBoxName" name='category' placeholder="Category" required>
-                            @if ($errors->has('category'))
+                            <label for="inputBoxTag">Box Name</label>
+                            <input type="text" class="form-control" id="inputBoxName" name='name' placeholder="Name" required>
+                            @if ($errors->has('name'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('category') }}</strong>
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                            @endif
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <label for="inputBoxTag">Warehouse</label>
+                            <select type="text" class="form-control" id="inputBoxName" name='warehouse' placeholder="Warehouse" required>
+                            
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <label for="inputBoxTag">Arrival Date</label>
+                            <input type="text" class="form-control" id="datepicker1" name='arrival' placeholder="Arrival Date" required>
+                            @if ($errors->has('arrival'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('arrival') }}</strong>
                                     </span>
                             @endif
                           </div>
