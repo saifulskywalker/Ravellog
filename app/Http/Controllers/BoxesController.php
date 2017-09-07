@@ -31,7 +31,7 @@ class BoxesController extends Controller
     {
         // $boxes = Box::orderBy('expire_date', 'asc')->paginate(10);
 
-        $boxes = DB::table('boxes')->join(DB::raw("(select box_id, GROUP_CONCAT(concat(name,' = ',quantity) SEPARATOR '\n ') as barang from items group by box_id) as F"),'F.box_id','=','boxes.id')->paginate(10);
+        $boxes = Box::doesntHave('inboundbox')->join(DB::raw("(select box_id, GROUP_CONCAT(concat(name,' = ',quantity) SEPARATOR '\n ') as barang from items group by box_id) as F"),'F.box_id','=','boxes.id')->paginate(10);
         return view('box.viewbox')->withBoxes($boxes);
     }
 
