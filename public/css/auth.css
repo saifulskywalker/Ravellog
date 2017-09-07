@@ -1,0 +1,14 @@
+#fixed {
+	background: #222D31;
+	min-height: 100vh;
+}
+.content {
+	padding-top: 15vh;
+}
+
+.content > .head-content {
+	color: #fff;
+	text-align: center;
+	font-size: 36px;
+	margin-bottom: 10px;
+}
