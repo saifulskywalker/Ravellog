@@ -9,7 +9,7 @@
                     <form class="form-horizontal" style="padding:1em" method="POST" action="{{ route('boxes.store') }}">
                     {{ csrf_field() }}
                       <fieldset>
-                        <legend>Add New Box</legend>
+                        <legend>Shipping In New Box</legend>
                         @if (Session::has('message'))
                           <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
@@ -38,9 +38,17 @@
                           <div class="col-md-12">
                             <label for="inputBoxTag">Warehouse</label>
                             <select type="text" class="form-control" id="inputBoxName" name='warehouse' placeholder="Warehouse" required>
-                            @foreach ($warehouse as $id => $name)
-                              <option value="{{$id}}">{{$name}}</option>
-                            @endforeach
+                            @if (auth()->user()->privilege == 'admin')
+                              @foreach ($warehouses as $warehouse)
+                                <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
+                              @endforeach
+                            @else
+                              @foreach ($warehouses as $warehouse)
+                                @if ($warehouse->id == auth()->user()->privilege)
+                                  <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
+                                @endif
+                              @endforeach
+                            @endif
                             </select>
                           </div>
                         </div>
@@ -70,7 +78,7 @@
                           <div class="col-md-12">
                             <label for="inputBoxTag">Person in Charge</label>
                             <select type="text" class="form-control" id="" name='employee' placeholder="Person in Charge" required>
-                            @foreach ($employee as $id => $name)
+                            @foreach ($employees as $id => $name)
                               <option value="{{$id}}">{{$name}}</option>
                             @endforeach
                             </select>
