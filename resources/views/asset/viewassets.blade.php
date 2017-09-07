@@ -23,8 +23,8 @@
                             <tbody>
                               @foreach($assets as $asset)
                                 <tr>
-                                  <td>{{$asset->item_name}}</td>
-                                  <td>{{$asset->quantity}}</td>
+                                  <td>{{$asset->name}}</td>
+                                  <td>{{$asset->quant}}</td>
                                 </tr>
                               @endforeach
                             </tbody>

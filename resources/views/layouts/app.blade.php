@@ -163,6 +163,7 @@
                             </div>
                         
                     </li>
+                    
                     <li>
                         <a href ="#" class="accordion">Employees
                             <span style="padding-top: 0.8em; padding-right: 1em;" class="glyphicon glyphicon-menu-down pull-right">
@@ -170,11 +171,14 @@
                         </a>
                             <div class="panel-drop">
                                 <a href="{{route('employee.index')}}">View Employee List</a>
+                                @if (auth()->user()->privilege == 'admin')
                                 <a href="{{route('employee.create')}}">Register New Employee</a>
                                 <a href="{{route('employee.delete')}}">Delete Employee</a>
+                                @endif
                             </div>
                         
                     </li>
+                    
                 
                 
                 <li>

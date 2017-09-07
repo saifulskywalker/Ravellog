@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Asset;
+use App\Item;
+use DB;
 
 class AssetController extends Controller
 {
@@ -15,7 +16,7 @@ class AssetController extends Controller
      */
     public function index()
     {
-        $assets = Asset::orderBy('id', 'desc')->paginate(5);
+        $assets = Item::groupBy('name')->select(DB::raw('name, SUM(quantity) as quant'))->paginate(5);
         return view('asset.viewassets')->withAssets($assets);
     }
 
