@@ -23,8 +23,14 @@
                             <tbody>
                               @foreach($assets as $asset)
                                 <tr>
-                                  <td>{{$asset->item_name}}</td>
-                                  <td>{{$asset->quantity}}</td>
+                                  <td>{{$asset->name}}</td>
+                                  <td>
+                                  @if ($asset->quant == '1')
+                                  {{$asset->quant}} piece
+                                  @else
+                                  {{$asset->quant}} pieces
+                                  @endif
+                                  </td>
                                 </tr>
                               @endforeach
                             </tbody>

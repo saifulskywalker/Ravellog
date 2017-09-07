@@ -9,7 +9,7 @@
                     <form class="form-horizontal" style="padding:1em" method="POST" action="">
                     {{ csrf_field() }}
                       <fieldset>
-                        <legend>Warehouse to Warehouse Box</legend>
+                        <legend>Warehouse to Warehouse Shipping</legend>
                         @if (Session::has('message'))
                           <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
