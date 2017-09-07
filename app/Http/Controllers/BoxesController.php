@@ -31,7 +31,7 @@ class BoxesController extends Controller
     {
         // $boxes = Box::orderBy('expire_date', 'asc')->paginate(10);
 
-        $boxes = Box::doesntHave('inboundbox')->join(DB::raw("(select box_id, GROUP_CONCAT(concat(name,' = ',quantity) SEPARATOR '\n ') as barang from items group by box_id) as F"),'F.box_id','=','boxes.id')->paginate(10);
+        $boxes = Box::whereNotNull('warehouse')->join(DB::raw('(select id,name as warehouse_name from warehouses) as whs'),'whs.id','=','boxes.warehouse')->join(DB::raw("(select box_id, GROUP_CONCAT(concat(name,' = ',quantity) SEPARATOR '\n') as barang from items group by box_id) as F"),'F.box_id','=','boxes.id')->paginate(10);
         return view('box.viewbox')->withBoxes($boxes);
     }
 
@@ -50,7 +50,9 @@ class BoxesController extends Controller
 
     public function moving()
     {
-        $boxes = Box::doesntHave('inboundbox')->get();
+        $temp1 = Box::doesntHave('inboundbox')->get();
+        $temp2 = Box::doesntHave('outboundbox')->get();
+        $boxes = $temp1->intersect($temp2);
         $trucks = Truck::pluck('name','id');
         $employees = Employee::pluck('employee_name','tag_tag');
         $warehouses = Warehouse::all();
@@ -66,10 +68,10 @@ class BoxesController extends Controller
     public function outbound()
     {
         $inbox = Box::doesntHave('outboundbox')->pluck('tag_tag','id');
-        $outbox = Box::has('inboundbox')->pluck('tag_tag','id');
+        $outbox = Box::doesntHave('inboundbox')->pluck('tag_tag','id');
         $box = $inbox->intersect($outbox);
         $employeeTags = Tag::has('employee')->pluck('tag');
-        $employee = Employee::pluck('employee_name','tag_tag');
+        $employee = Employee::pluck('employee_name','id');
         return view('box.outboundbox', compact( 'box','employee'));
     }
 
@@ -81,12 +83,12 @@ class BoxesController extends Controller
     public function create()
     {
         $boxtag = Tag::doesntHave('box')->pluck('tag');
-        $employeetag = Tag::doesntHave('employee')->pluck('tag');
-        $tags = $boxtag->intersect($employeetag);
+        $employeetags = Tag::doesntHave('employee')->pluck('tag');
+        $tags = $boxtag->intersect($employeetags);
         $employeeTags = Tag::has('employee')->pluck('tag');
-        $employee = Employee::pluck('employee_name','id');
-        $warehouse = Warehouse::pluck('name','id');
-        return view('box.createbox', compact('tags','warehouse','employee'));
+        $employees = Employee::pluck('employee_name','id');
+        $warehouses = Warehouse::get();
+        return view('box.createbox', compact('tags','warehouses','employees'));
     }
 
     /**
@@ -294,6 +296,10 @@ class BoxesController extends Controller
                 $box->depart_destination   = $depart_destination;
                 $box->employee_id           = $employee;
                 $box->save();
+
+                $delete = Box::find($out);
+                $delete->item()->delete();
+                Box::destroy($outbound);
             }
             
 

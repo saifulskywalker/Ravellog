@@ -9,7 +9,7 @@
                     
                     {{ csrf_field() }}
                       <fieldset>
-                        <legend style="padding-left:1em; padding-top:0.5em;">View Boxes</legend>
+                        <legend style="padding-left:1em; padding-top:0.5em;">Inventory</legend>
                         @if (Session::has('message'))
                           <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
@@ -20,7 +20,6 @@
                                 <th>Box Name</th>
                                 <th>Warehouse</th>
                                 <th>Position</th>
-                                <th>Arrival Date</th>
                                 <th>Expire Date</th>
                                 <th>Item</th>
                             </thread>
@@ -29,12 +28,18 @@
                               @foreach($boxes as $box)
                                 <tr>
                                   <td>{{$box->tag_tag}}</td>
-                                  <td></td>
-                                  <td>{{$box->warehouse}}</td>
-                                  <td>{{$box->location}}</td>
-                                  <td></td>
+                                  <td>{{$box->name}}</td>
+                                  <td>{{$box->warehouse_name}}</td>
+                                  <td>
+                                  @if ($box->location != null)
+                                    Shelf {{$box->location}}
+                                  @else
+                                    not detected
+                                  @endif
+
+                                  </td>
                                   <td>{{$box->expire_date}}</td>
-                                  <td>{{$box->barang}}</td>
+                                  <td style="white-space:pre;">{{$box->barang}}</td>
                                 </tr>
                               @endforeach
                             </tbody>

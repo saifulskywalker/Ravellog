@@ -9,7 +9,7 @@
                     <form class="form-horizontal" style="padding:1em" method="POST" action="{{ route('boxes.outboundboxes') }}">
                     {{ csrf_field() }}
                       <fieldset>
-                        <legend>Outbound Box</legend>
+                        <legend>Shipping Out</legend>
                         @if (Session::has('message'))
                           <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif

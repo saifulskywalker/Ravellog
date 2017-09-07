@@ -9,7 +9,8 @@ class Box extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
-    public function tag() {
+    public function tag() 
+    {
     	return $this->belongsTo(Tag::class);
     }
 
@@ -25,5 +26,9 @@ class Box extends Model
     public function warehouse()
     {
         return $this->belongsTo(Warehouse::class);
+    }
+    public function item()
+    {
+        return $this->hasMany(Item::class);
     }
 }
