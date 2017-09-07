@@ -11,7 +11,7 @@
   position: fixed;
   height: 100%;
   overflow-y: auto;
-  z-index: 1000;
+  z-index: 1;
   transition: all 0.4s ease 0s;
 }
 
@@ -23,6 +23,10 @@
   left: 0;
 }
 
+#menu-toggle {
+  color: #fff;
+}
+
 /* Content Styles */
 
 #header-content-wrapper {
@@ -31,16 +35,22 @@
   padding-top: 5px;
   transition: all 0.4s ease 0s;
   background: #3C8DBC;
+  position: fixed;
+  z-index: 1;
 }
 
 #body-content-wrapper {
   width: 100%;
-  padding-top: 30px;
+  padding-top: 75px;
   min-height: 100vh;
   transition: all 0.4s ease 0s;
   background: #ECEFF4;
+  z-index: 0;
 }
 
+.square {
+  background: #fff;
+}
 /* Sidebar Styles */
 
 .sidebar-nav {
