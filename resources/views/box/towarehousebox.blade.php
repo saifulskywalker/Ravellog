@@ -17,11 +17,17 @@
                           <div class="col-md-12">
                             <label for="inputBoxTag">Boxes</label>
                             <select type="text" class="form-control" id="multiselect" multiple="multiple" name='box_id[]' placeholder="Boxes" required>
+                            @if (auth()->user()->privilege == 'superuser')
+                              @foreach ($boxes as $box)
+                                <option value="{{$box->id}}">{{$box->tag_tag}}</option>
+                              @endforeach
+                            @else
                               @foreach ($boxes as $box)
                                 @if ($box->warehouse == auth()->user()->privilege)
                                   <option value="{{$box->id}}">{{$box->tag_tag}}</option>
                                 @endif
                               @endforeach
+                            @endif
                             </select>
                           </div>
                         </div>
@@ -29,11 +35,17 @@
                           <div class="col-md-12">
                             <label for="inputBoxTag">Departure From</label>
                             <select type="text" class="form-control" id="" name='from' placeholder="Departure From" required>
+                            @if (auth()->user()->privilege == 'superuser')
+                              @foreach ($warehouses as $warehouse)
+                                <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
+                              @endforeach
+                            @else
                               @foreach ($warehouses as $warehouse)
                                 @if ($warehouse->id == auth()->user()->privilege)
                                   <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
                                 @endif
                               @endforeach
+                            @endif
                             
 
                             </select>
@@ -43,11 +55,17 @@
                           <div class="col-md-12">
                             <label for="inputBoxTag">Arrival Destination</label>
                             <select type="text" class="form-control" id="" name='to' placeholder="Arrival Destination" required>
+                            @if (auth()->user()->privilege == 'superuser')
+                              @foreach ($warehouses as $warehouse)
+                                <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
+                              @endforeach
+                            @else
                               @foreach ($warehouses as $warehouse)
                                 @if ($warehouse->id != auth()->user()->privilege)
                                   <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
                                 @endif
                               @endforeach
+                            @endif
                             </select>
                           </div>
                         </div>

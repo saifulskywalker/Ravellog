@@ -17,11 +17,17 @@
                           <div class="col-md-12">
                             <label for="inputBoxTag">Box Tag</label>
                             <select type="text" class="form-control" id="multiselect" multiple="multiple" name='box_id[]' placeholder="Box Tag" required>
-                            @foreach ($boxes as $box)
+                            @if (auth()->user()->privilege == 'superuser')
+                              @foreach ($boxes as $box)
+                                <option value="{{$box->id}}">{{$box->tag_tag}}</option>
+                              @endforeach
+                            @else
+                              @foreach ($boxes as $box)
                                 @if ($box->warehouse == auth()->user()->privilege)
                                   <option value="{{$box->id}}">{{$box->tag_tag}}</option>
                                 @endif
-                            @endforeach
+                              @endforeach
+                            @endif
                             </select>
                           </div>
                         </div>
