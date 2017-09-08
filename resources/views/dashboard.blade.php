@@ -10,10 +10,18 @@
                     <div class="col-xs-3">
                         <div class="panel panel-success">
                             <div class="panel-heading">
-                                Warehouse Name
+                                Warehouse
                             </div>
                             <div class="panel-body">
-                                Cikarang
+                                @if (auth()->user()->privilege == 'superuser' or 'admin')
+                                    All Warehouses
+                                @else
+                                    @foreach ($warehouses as $warehouse)
+                                        @if (auth()->user()->privilege == $warehouse->id)
+                                            {{$warehouse->name}}
+                                        @endif
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -23,7 +31,7 @@
                                 Number of Boxes
                             </div>
                             <div class="panel-body">
-                                103
+                                {{$boxes}}
                             </div>
                         </div>
                     </div>
@@ -33,7 +41,7 @@
                                 Vehicle on the Way
                             </div>
                             <div class="panel-body">
-                                7 <small>of</small> 15
+                                {{$movingboxes}}
                             </div>
                         </div>
                     </div>
@@ -77,17 +85,28 @@
                             <table class="table">
                                 <thead>
                                     <tr>
+                                        <td>Box Tag</td>
                                         <td>Box Name</td>
-                                        <td>Item</td>
-                                        <td>Status</td>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
+                                    @if ((auth()->user()->privilege == 'superuser') or (auth()->user()->privilege == 'admin'))
+                                        @foreach ($inboundboxes as $in)
+                                        <tr>
+                                            <td>{{$in->tag_tag}}</td>
+                                            <td>{{$in->name}}</td>
+                                        </tr>
+                                        @endforeach
+                                    @else
+                                        @foreach ($inboundboxes as $in)
+                                            @if (auth()->user()->privilege == $in->arrival_destination)
+                                            <tr>
+                                                <td>{{$in->tag_tag}}</td>
+                                                <td>{{$in->name}}</td>
+                                            </tr>
+                                            @endif
+                                        @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
@@ -97,22 +116,33 @@
                     <div class="col-md-6">
                         <div class="panel">
                             <div class="panel-heading">
-                                Outcoming Boxes for Today
+                                Shipping Out for Today
                             </div>
                             <table class="table">
                                 <thead>
                                     <tr>
+                                        <td>Box Tag</td>
                                         <td>Box Name</td>
-                                        <td>Item</td>
-                                        <td>Status</td>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
+                                @if ((auth()->user()->privilege == 'superuser') or (auth()->user()->privilege == 'admin'))
+                                        @foreach ($outboundboxes as $out)
+                                        <tr>
+                                            <td>{{$out->tag_tag}}</td>
+                                            <td>{{$out->name}}</td>
+                                        </tr>
+                                        @endforeach
+                                    @else
+                                        @foreach ($outboundboxes as $out)
+                                            @if (auth()->user()->privilege == $out->warehouse)
+                                            <tr>
+                                                <td>{{$out->tag_tag}}</td>
+                                                <td>{{$out->name}}</td>
+                                            </tr>
+                                            @endif
+                                        @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

@@ -117,9 +117,6 @@
                     <li class="sidebar-menu">
                         MAIN MENU
                     </li>
-                    <li>
-                        <a href="#">Dashboard</a>
-                    </li>
                     <!-- if user has admin privilege, this menu will appear -->
                     @if (auth()->user()->privilege == 'admin')
                         <li>
@@ -146,6 +143,9 @@
                         </li>
                     <!-- end of admin only menu -->
                     @else
+                    <li>
+                        <a href="{{route('/')}}">Dashboard</a>
+                    </li>
                     <li>
                         <a href="{{route('boxes.index')}}">Inventory</a>
                     </li>
