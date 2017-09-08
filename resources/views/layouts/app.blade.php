@@ -132,8 +132,20 @@
                                 <a href="{{route('tag.delete')}}">Delete RFID Tag</a>
                             </div>
                         </li>
-                    @endif
+
+                        <li>
+                        <a href ="#" class="accordion">Employees
+                            <span style="padding-top: 0.8em; padding-right: 1em;" class="glyphicon glyphicon-menu-down pull-right">
+                            </span>
+                        </a>
+                            <div class="panel-drop">
+                                <a href="{{route('employee.index')}}">View Employee List</a>
+                                <a href="{{route('employee.create')}}">Register New Employee</a>
+                                <a href="{{route('employee.delete')}}">Delete Employee</a>
+                            </div>
+                        </li>
                     <!-- end of admin only menu -->
+                    @else
                     <li>
                         <a href="{{route('boxes.index')}}">Inventory</a>
                     </li>
@@ -146,33 +158,18 @@
                                 <a href="{{route('boxes.create')}}">Shipping In</a>
                                 <a href="{{route('boxes.movingbox')}}">Shipping Internal</a>
                                 <a href="{{route('boxes.outboundbox')}}">Shipping Out</a>
-                    <!-- if user has admin privilege, this menu will appear -->
-                    @if (auth()->user()->privilege == 'admin')
-                                <a href="{{route('boxes.delete')}}">Delete Box</a>
-                    @endif
-                    <!-- end of admin only menu -->
                             </div>
-                        
                     </li>
                     <li>
                         <a href ="{{route('asset.index')}}" class="accordion">Assets</a> 
                     </li>
-                    
                     <li>
                         <a href ="{{route('employee.index')}}" class="accordion">Employees
-                            @if (auth()->user()->privilege == 'admin')
-                            <span style="padding-top: 0.8em; padding-right: 1em;" class="glyphicon glyphicon-menu-down pull-right">
-                            </span>
-                            @endif
                         </a>
-                            <div class="panel-drop">
-                                @if (auth()->user()->privilege == 'admin')
-                                <a href="{{route('employee.create')}}">Register New Employee</a>
-                                <a href="{{route('employee.delete')}}">Delete Employee</a>
-                                @endif
-                            </div>
-                        
-                    </li>
+                        </li>
+                    @endif
+                    
+                    
                     
                 
                 

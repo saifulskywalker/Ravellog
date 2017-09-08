@@ -17,8 +17,10 @@
                           <div class="col-md-12">
                             <label for="inputBoxTag">Box Tag</label>
                             <select type="text" class="form-control" id="multiselect" multiple="multiple" name='box_id[]' placeholder="Box Tag" required>
-                            @foreach ($box as $box_id => $tag)
-                              <option value="{{$box_id}}">{{$tag}}</option>
+                            @foreach ($boxes as $box)
+                                @if ($box->warehouse == auth()->user()->privilege)
+                                  <option value="{{$box->id}}">{{$box->tag_tag}}</option>
+                                @endif
                             @endforeach
                             </select>
                           </div>
@@ -49,6 +51,9 @@
                             @endforeach
                             </select>
                           </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name='warehouse' value = "{{auth()->user()->privilege}}">
                         </div>
                           <br>
                         <div class="form-group">

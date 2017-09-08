@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-success">
                     @if(Auth::check())
-                    <form class="form-horizontal" style="padding:1em" method="POST" action="">
+                    <form class="form-horizontal" style="padding:1em" method="POST" action="{{ route('boxes.movingboxes') }}">
                     {{ csrf_field() }}
                       <fieldset>
                         <legend>Warehouse to Warehouse Shipping</legend>
@@ -17,35 +17,23 @@
                           <div class="col-md-12">
                             <label for="inputBoxTag">Boxes</label>
                             <select type="text" class="form-control" id="multiselect" multiple="multiple" name='box_id[]' placeholder="Boxes" required>
-                            @if (auth()->user()->privilege == 'admin')
-                              @foreach ($boxes as $box)
-                                <option value="{{$box->id}}">{{$box->tag_tag}}</option>
-                              @endforeach
-                            @else
                               @foreach ($boxes as $box)
                                 @if ($box->warehouse == auth()->user()->privilege)
                                   <option value="{{$box->id}}">{{$box->tag_tag}}</option>
                                 @endif
                               @endforeach
-                            @endif
                             </select>
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxTag">Departure From</label>
-                            <select type="text" class="form-control" id="" name='' placeholder="Departure From" required>
-                            @if (auth()->user()->privilege == 'admin')
-                              @foreach ($warehouses as $warehouse)
-                                <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
-                              @endforeach
-                            @else
+                            <select type="text" class="form-control" id="" name='from' placeholder="Departure From" required>
                               @foreach ($warehouses as $warehouse)
                                 @if ($warehouse->id == auth()->user()->privilege)
                                   <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
                                 @endif
                               @endforeach
-                            @endif
                             
 
                             </select>
@@ -54,18 +42,12 @@
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxTag">Arrival Destination</label>
-                            <select type="text" class="form-control" id="" name='' placeholder="Arrival Destination" required>
-                            @if (auth()->user()->privilege == 'admin')
-                              @foreach ($warehouses as $warehouse)
-                                <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
-                              @endforeach
-                            @else
+                            <select type="text" class="form-control" id="" name='to' placeholder="Arrival Destination" required>
                               @foreach ($warehouses as $warehouse)
                                 @if ($warehouse->id != auth()->user()->privilege)
                                   <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
                                 @endif
                               @endforeach
-                            @endif
                             </select>
                           </div>
                         </div>
@@ -94,7 +76,7 @@
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxTag">Truck</label>
-                            <select type="text" class="form-control" id="" name='' placeholder="Truck" required>
+                            <select type="text" class="form-control" id="" name='truck' placeholder="Truck" required>
                             @foreach ($trucks as $id => $name)
                               <option value="{{$id}}">{{$name}}</option>
                             @endforeach
