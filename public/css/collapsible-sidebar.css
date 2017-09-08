@@ -124,6 +124,30 @@
     color: #ECEFF4;
 }
 
+/* Dashboard Styles */
+.panel-success {
+  text-align: center;
+}
+.panel-info {
+  text-align: center;
+}
+.panel-info > .panel-body {
+  text-align: center;
+  margin: -13px;
+  font-size: 30px;
+}
+.panel-warning {
+  text-align: center;
+}
+.panel-warning > .panel-body {
+  text-align: left;
+}
+
+.dashboard-tracking {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
 @media (max-width:767px) {
     #wrapper {
       padding-left: 0;
