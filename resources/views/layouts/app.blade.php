@@ -161,12 +161,32 @@
                             </div>
                     </li>
                     <li>
+                        <a href ="#" class="accordion">Tracking
+                            <span style="padding-top: 0.8em; padding-right: 1em;" class="glyphicon glyphicon-menu-down pull-right">
+                            </span>
+                        </a>
+                            <div class="panel-drop">
+                                <a href="{{route('tracking.ontracking')}}">Ongoing</a>
+                                <a href="{{route('tracking.finishtracking')}}">Finished</a>
+                            </div>
+                    </li>
+                    <li>
+                        <a href ="#" class="accordion">Issues
+                            <span style="padding-top: 0.8em; padding-right: 1em;" class="glyphicon glyphicon-menu-down pull-right">
+                            </span>
+                        </a>
+                            <div class="panel-drop">
+                                <a href="{{route('issue.onissue')}}">Ongoing</a>
+                                <a href="{{route('issue.resolveissue')}}">Resolved</a>
+                            </div>
+                    </li>
+                    <li>
                         <a href ="{{route('asset.index')}}" class="accordion">Assets</a> 
                     </li>
                     <li>
                         <a href ="{{route('employee.index')}}" class="accordion">Employees
                         </a>
-                        </li>
+                    </li>
                     @endif
                     
                     
