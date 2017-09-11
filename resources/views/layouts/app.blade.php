@@ -166,7 +166,7 @@
                             </span>
                         </a>
                             <div class="panel-drop">
-                                <a href="{{route('tracking.ontracking')}}">Ongoing</a>
+                                <a href="/ontracking/default">Ongoing</a>
                                 <a href="{{route('tracking.finishtracking')}}">Finished</a>
                             </div>
                     </li>

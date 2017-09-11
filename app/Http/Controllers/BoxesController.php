@@ -301,7 +301,7 @@ class BoxesController extends Controller
 
                 $delete = Box::find($out);
                 $delete->item()->delete();
-                Box::destroy($outbound);
+                Box::destroy($out);
             }
             
 
@@ -336,31 +336,31 @@ class BoxesController extends Controller
             $boxes = Input::get('box_id');
             $expect_dep_date = Input::get('expect_dep_date');
             $expect_arr_date = Input::get('expect_arr_date');
-            $to = Input::get('to');
+            list($to_id,$to_name) = explode('|',Input::get('to'));
+            list($from_id,$from_name) = explode('|',Input::get('from'));
             $employee = Input::get('employee');
             $truck = Input::get('truck');
-            $from = Input::get('from');
 
             foreach ($boxes as $box) {
                 $out = new OutboundBox;
                 $out->box_id                = $box;
                 $out->exp_depart_date      = $expect_dep_date;
-                $out->depart_destination   = $to;
-                $out->warehouse             = $from;
+                $out->depart_destination   = $to_id;
+                $out->warehouse             = $from_id;
                 $out->employee_id           = $employee;
                 $out->save();
 
                 $in = new InboundBox;
                 $in->box_id                = $box;
                 $in->exp_arrival_date      = $expect_arr_date;
-                $in->arrival_destination   = $to;
+                $in->arrival_destination   = $to_id;
                 $in->employee_id           = $employee;
                 $in->save();
             }
 
             $move = new MovingBox;
-            $move->depart_from          = $from;
-            $move->arrive_to            = $to;
+            $move->depart_from          = $from_name;
+            $move->arrive_to            = $to_name;
             $move->truck_id             = $truck;
             $move->save();
             
