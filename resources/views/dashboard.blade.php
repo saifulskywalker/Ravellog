@@ -64,7 +64,7 @@
                     <div class="">
                         <div class="panel panel-info">
                             <div class="panel-heading">
-                                Tracking for Trucks
+                                Our Warehouses
                             </div>
                             <div class="panel-body">
                                 <div id="map" style="height: 400px; width: auto; margin: -16px;">

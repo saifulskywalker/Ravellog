@@ -41,7 +41,7 @@ Route::resource('asset','AssetController',['except' => [
 Route::resource('employee','EmployeesController');
 Route::get('deletemployee','EmployeesController@delete')->name('employee.delete');
 
-Route::get('ontracking','TrackingController@ontracking')->name('tracking.ontracking');
+Route::get('/ontracking/{id}','TrackingController@ontracking')->name('tracking.ontracking');
 Route::get('finishtracking','TrackingController@finishtracking')->name('tracking.finishtracking');
 
 Route::get('onissue','IssueController@onissue')->name('issue.onissue');
