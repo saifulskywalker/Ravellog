@@ -13,7 +13,7 @@
                                 Warehouse
                             </div>
                             <div class="panel-body">
-                                @if (auth()->user()->privilege == 'superuser' or 'admin')
+                                @if (auth()->user()->privilege == 'superuser')
                                     All Warehouses
                                 @else
                                     @foreach ($warehouses as $warehouse)

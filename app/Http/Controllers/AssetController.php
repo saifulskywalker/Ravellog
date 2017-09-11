@@ -17,7 +17,7 @@ class AssetController extends Controller
      */
     public function index()
     {
-        $assets = Item::select(DB::raw('name, sum(quantity) as quant'))->join(DB::raw('(select id, location from boxes where location is not null and deleted_at is null) as box'),'box.id','=','items.box_id')->groupBy('name')->paginate(15);
+        $assets = Item::select(DB::raw('name, sum(quantity) as quant'))->join(DB::raw('(select id, warehouse from boxes where warehouse is not null and deleted_at is null) as box'),'box.id','=','items.box_id')->groupBy('name')->paginate(15);
         return view('asset.viewassets')->withAssets($assets);
     }
 
