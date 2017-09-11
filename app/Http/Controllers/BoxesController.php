@@ -53,8 +53,8 @@ class BoxesController extends Controller
         $temp1 = Box::doesntHave('inboundbox')->get();
         $temp2 = Box::doesntHave('outboundbox')->get();
         $boxes = $temp1->intersect($temp2);
-        $trucks = Truck::pluck('name','id');
-        $employees = Employee::pluck('employee_name','tag_tag');
+        $trucks = Truck::doesntHave('movingbox')->pluck('name','id');
+        $employees = Employee::pluck('employee_name','id');
         $warehouses = Warehouse::all();
         return view('box.towarehousebox', compact( 'boxes','employees','warehouses','trucks'));
     }
@@ -67,12 +67,12 @@ class BoxesController extends Controller
      */
     public function outbound()
     {
-        $inbox = Box::doesntHave('outboundbox')->pluck('tag_tag','id');
-        $outbox = Box::doesntHave('inboundbox')->pluck('tag_tag','id');
-        $box = $inbox->intersect($outbox);
+        $inbox = Box::doesntHave('outboundbox')->get();
+        $outbox = Box::doesntHave('inboundbox')->get();
+        $boxes = $inbox->intersect($outbox);
         $employeeTags = Tag::has('employee')->pluck('tag');
         $employee = Employee::pluck('employee_name','id');
-        return view('box.outboundbox', compact( 'box','employee'));
+        return view('box.outboundbox', compact( 'boxes','employee'));
     }
 
     /**
@@ -286,6 +286,7 @@ class BoxesController extends Controller
             // store to inbound_boxes column
             $outbound = Input::get('box_id');
             $expect_dep_date = Input::get('expect_dep_date');
+            $warehouse = Input::get('warehouse');
             $depart_destination = Input::get('destination');
             $employee = Input::get('employee');
 
@@ -294,6 +295,7 @@ class BoxesController extends Controller
                 $box->box_id                = $out;
                 $box->exp_depart_date      = $expect_dep_date;
                 $box->depart_destination   = $depart_destination;
+                $box->warehouse             = $warehouse;
                 $box->employee_id           = $employee;
                 $box->save();
 
@@ -306,6 +308,66 @@ class BoxesController extends Controller
             // redirect
             Session::flash('message', 'Successfully recorded entries for outbound boxes!');
             return Redirect::to('outboundbox');
+        }
+    }
+
+    public function movingboxes(Request $request)
+    {
+        // validate
+        // read more on validation at http://laravel.com/docs/validation
+        $rules = array(
+            'box_id'       => 'required',
+            'from'       => 'required',
+            'to'       => 'required',
+            'expect_dep_date' => 'required|date',
+            'expect_arr_date' => 'required|date',
+            'truck' => 'required',
+            'employee' => 'required'
+        );
+        $validator = Validator::make(Input::all(), $rules);
+
+        // validation for the post data
+        if ($validator->fails()) {
+            return Redirect::to('outboundbox')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            // store to inbound_boxes column
+            $boxes = Input::get('box_id');
+            $expect_dep_date = Input::get('expect_dep_date');
+            $expect_arr_date = Input::get('expect_arr_date');
+            $to = Input::get('to');
+            $employee = Input::get('employee');
+            $truck = Input::get('truck');
+            $from = Input::get('from');
+
+            foreach ($boxes as $box) {
+                $out = new OutboundBox;
+                $out->box_id                = $box;
+                $out->exp_depart_date      = $expect_dep_date;
+                $out->depart_destination   = $to;
+                $out->warehouse             = $from;
+                $out->employee_id           = $employee;
+                $out->save();
+
+                $in = new InboundBox;
+                $in->box_id                = $box;
+                $in->exp_arrival_date      = $expect_arr_date;
+                $in->arrival_destination   = $to;
+                $in->employee_id           = $employee;
+                $in->save();
+            }
+
+            $move = new MovingBox;
+            $move->depart_from          = $from;
+            $move->arrive_to            = $to;
+            $move->truck_id             = $truck;
+            $move->save();
+            
+
+            // redirect
+            Session::flash('message', 'Successfully recorded entries for warehouse-to-warehouse shipping!');
+            return Redirect::to('movingbox');
         }
     }
 
