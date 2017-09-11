@@ -61,12 +61,15 @@
             <!-- Dashboard Tracking-->
             <div class="row">
                 <div class="dashboard-tracking">
-                    <div class="panel">
-                        <div class="panel-heading">
-                            Tracking for Trucks
-                        </div>
-                        <div class="panel-body">
-                            
+                    <div class="">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                Tracking for Trucks
+                            </div>
+                            <div class="panel-body">
+                                <div id="map" style="height: 400px; width: auto; margin: -16px;">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -153,4 +156,38 @@
         </div>
     </div>
 </div>
+
+<!-- for Maps Google -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiTBGdCMO7HBL3selHgQellXImNHrt1z4"></script>
+    <script type="text/javascript">
+        var locations = [
+            @foreach ($warehouses as $warehouse)
+                [ "{{ $warehouse->name }}", "{{ $warehouse->address }}", "{{ $warehouse->latitude }}", "{{ $warehouse->longitude }}" ],
+            @endforeach
+        ];
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 5,
+            center: new google.maps.LatLng(-1.082629, 118.4985576),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var infowindow = new google.maps.InfoWindow();
+
+        var marker, i;
+
+        for (i = 0; i < locations.length; i++) { 
+                marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][2], locations[i][3]),
+                map: map
+            });
+
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                  infowindow.setContent(locations[i][0]);
+                  infowindow.open(map, marker);
+                }
+            })(marker, i));
+        }
+    </script>
 @endsection
