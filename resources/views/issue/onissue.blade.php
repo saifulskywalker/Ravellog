@@ -30,7 +30,7 @@
                                   <td></td>
                                   <td></td>
                                   <td></td>
-                                  <td><button class="btn btn-info" type="button" onclick=""><span>Resolve</span></button></td>
+                                  <td><button class="btn btn-info" data-toggle="modal" data-target="#Issue">Resolve</button></td>
                                 </tr>
                             </tbody>
                           </table>
@@ -40,7 +40,50 @@
                           </div>    
                         </div>
                       </fieldset>
-                    
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="Issue" tabindex="-1" role="dialog" 
+                           aria-labelledby="Issuelabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <!-- Modal Header -->
+                                  <div class="modal-header">
+                                      <button type="button" class="close" 
+                                         data-dismiss="modal">
+                                             <span aria-hidden="true">&times;</span>
+                                             <span class="sr-only">Close</span>
+                                      </button>
+                                      <h4 class="modal-title" id="Issuelabel">
+                                          Resolve
+                                      </h4>
+                                  </div>
+                                  
+                                  <!-- Modal Body -->
+                                  <div class="modal-body">
+                                      <fieldset>
+                                        <form role="form">
+                                          <div class="form-group">
+                                            <label for="inputBoxTag">Box Tag</label>
+                                              <select type="text" class="form-control" id="inputBoxTag" name='' placeholder="Box Tag" disabled>
+                                              </select>
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="inputBoxName">Box Name</label>
+                                              <select type="text" class="form-control" id="inputBoxName" name='' placeholder="Box Name" disabled>
+                                              </select>
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="inputBoxName">Justification</label>
+                                              <textarea class="form-control" rows="5" id="inputJustify" name='' placeholder="Justification" required>
+                                              </textarea>
+                                          </div>
+                                          <button type="submit" class="btn btn-default">Submit</button>
+                                        </form>
+                                      </fieldset>  
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                     @endif
 
             </div>
