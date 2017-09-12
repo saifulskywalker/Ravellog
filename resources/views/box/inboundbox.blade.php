@@ -3,13 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row no-gutters">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
+        <legend>Inbound Box</legend>
             <div class="panel panel-success">
                     @if(Auth::check())
                     <form class="form-horizontal" style="padding:1em" method="POST" action="{{ route('boxes.inboundboxes') }}">
                     {{ csrf_field() }}
                       <fieldset>
-                        <legend>Inbound Box</legend>
+                        
                         @if (Session::has('message'))
                           <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
