@@ -4,21 +4,24 @@
 <div class="container">
     <div class="row no-gutters">
         <div class="col-md-8 col-md-offset-2">
+        <legend style="padding-left:1em; padding-top:0.5em;">View Employee List</legend>
             <div class="panel panel-success">
                     @if(Auth::check())
                     
                     {{ csrf_field() }}
                       <fieldset>
-                        <legend style="padding-left:1em; padding-top:0.5em;">View Employee List</legend>
+                        
                         @if (Session::has('message'))
                           <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
                         <div class="col-md-12">
                           <table class="table">
-                            <thread>
+                            <thead>
+                            <tr>
                                 <th>Employee Tag</th>
                                 <th>Employee Name</th>
-                            </thread>
+                            </tr>
+                            </thead>
 
                             <tbody>
                               @foreach($employees as $employee)

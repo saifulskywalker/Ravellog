@@ -3,26 +3,29 @@
 @section('content')
 <div class="container">
     <div class="row no-gutters">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
+        <legend style="padding-left:1em; padding-top:0.5em;">Inventory</legend>
             <div class="panel panel-success">
                     @if(Auth::check())
                     
                     {{ csrf_field() }}
                       <fieldset>
-                        <legend style="padding-left:1em; padding-top:0.5em;">Inventory</legend>
+                        
                         @if (Session::has('message'))
                           <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
                         <div class="col-md-12">
                           <table class="table">
-                            <thread>
+                            <thead>
+                              <tr>
                                 <th>Box Tag</th>
                                 <th>Box Name</th>
                                 <th>Warehouse</th>
                                 <th>Position</th>
                                 <th>Expire Date</th>
                                 <th>Item</th>
-                            </thread>
+                              </tr>
+                            </thead>
 
                             <tbody>
                               @foreach($boxes as $box)
