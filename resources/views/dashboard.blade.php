@@ -172,6 +172,8 @@
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
 
+		//create empty LatLngBounds object
+		var bounds = new google.maps.LatLngBounds();
         var infowindow = new google.maps.InfoWindow();
 
         var marker, i;
@@ -182,6 +184,9 @@
                 map: map
             });
 
+            //extend the bounds to include each marker's position
+  			bounds.extend(marker.position);
+
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
                 return function() {
                   infowindow.setContent(locations[i][0]);
@@ -189,5 +194,9 @@
                 }
             })(marker, i));
         }
+
+        //now fit the map to the newly inclusive bounds
+		map.fitBounds(bounds); //auto zoom
+		map.panToBounds(bounds); //auto center
     </script>
 @endsection
