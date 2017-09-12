@@ -72,7 +72,9 @@
     <script type="text/javascript">
         var locations = [
             @foreach ($trackings as $tracking)
+              @if ($tracking->latitude != 'x')
                 [ "{{ $tracking->truck_id }}", "{{ $tracking->time_update }}", "{{ $tracking->latitude }}", "{{ $tracking->longitude }}" ],
+              @endif
             @endforeach
         ];
 
