@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row no-gutters">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-8 col-md-offset-2">
         <legend style="padding-left:1em; padding-top:0.5em;">Warehouse to Warehouse Shipping</legend>
             <div class="panel panel-success">
                     @if(Auth::check())
