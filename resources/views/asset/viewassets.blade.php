@@ -4,21 +4,24 @@
 <div class="container">
     <div class="row no-gutters">
         <div class="col-md-8 col-md-offset-2">
+        <legend style="padding-left:1em; padding-top:0.5em;">View Assets</legend>
             <div class="panel panel-success">
                     @if(Auth::check())
                     
                     {{ csrf_field() }}
                       <fieldset>
-                        <legend style="padding-left:1em; padding-top:0.5em;">View Assets</legend>
+                        
                         @if (Session::has('message'))
                           <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
                         <div class="col-md-12">
                           <table class="table">
-                            <thread>
+                            <thead>
+                              <tr>
                                 <th>Item Name</th>
                                 <th>Quantity</th>
-                            </thread>
+                              </tr>
+                            </tread>
 
                             <tbody>
                               @foreach($assets as $asset)
