@@ -112,17 +112,21 @@
                 @else
                     <!-- for all user and admin, can view dashboard layout -->
                     <li class="sidebar-profile">
-                        <a href="#"><span style="padding-right: 10px" class="glyphicon glyphicon-user"></span>{{auth()->user()->name}}</a>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-user"></span>
+                            </span>{{auth()->user()->name}}
+                        </a>
                     </li>
-                    <li class="sidebar-menu">
+                    <li class="sidebar-menu" style="padding-left: 1em;">
                         MAIN MENU
                     </li>
                     <!-- if user has admin privilege, this menu will appear -->
                     @if (auth()->user()->privilege == 'admin')
                         <li>
-                        <a href ="#" class="accordion">RFID Tag Management
-                            <span style="padding-top: 0.8em; padding-right: 1em;" class="glyphicon glyphicon-menu-down pull-right">
-                            </span>
+                        <a href ="#" class="accordion">
+                            <span class="glyphicon glyphicon-tags"></span>
+                            RFID Tag Management
+                            <span class="glyphicon glyphicon-menu-down"></span>
                         </a>
                             <div class="panel-drop">
                                 <a href="{{route('tag.create')}}">Add RFID Tag</a>
@@ -131,9 +135,10 @@
                         </li>
 
                         <li>
-                        <a href ="#" class="accordion">Employees
-                            <span style="padding-top: 0.8em; padding-right: 1em;" class="glyphicon glyphicon-menu-down pull-right">
-                            </span>
+                        <a href ="#" class="accordion">
+                            <span class="glyphicon glyphicon-user"></span>
+                            Employees
+                            <span class="glyphicon glyphicon-menu-down"></span>
                         </a>
                             <div class="panel-drop">
                                 <a href="{{route('employee.index')}}">View Employee List</a>
@@ -144,15 +149,22 @@
                     <!-- end of admin only menu -->
                     @else
                     <li>
-                        <a href="{{route('/')}}">Dashboard</a>
+                        <a href="{{route('/')}}">
+                            <span class="glyphicon glyphicon-dashboard"></span>
+                            Dashboard
+                        </a>
                     </li>
                     <li>
-                        <a href="{{route('boxes.index')}}">Inventory</a>
+                        <a href="{{route('boxes.index')}}">
+                            <span class="glyphicon glyphicon-list-alt"></span>
+                            Inventory
+                        </a>
                     </li>
                     <li>
-                        <a href ="#" class="accordion">Shipping Management
-                            <span style="padding-top: 0.8em; padding-right: 1em;" class="glyphicon glyphicon-menu-down pull-right">
-                            </span>
+                        <a href ="#" class="accordion">
+                            <span class="glyphicon glyphicon-transfer"></span>
+                            Shipping Management
+                            <span class="glyphicon glyphicon-menu-down"></span>
                         </a>
                             <div class="panel-drop">
                                 <a href="{{route('boxes.create')}}">Shipping In</a>
@@ -161,9 +173,10 @@
                             </div>
                     </li>
                     <li>
-                        <a href ="#" class="accordion">Tracking
-                            <span style="padding-top: 0.8em; padding-right: 1em;" class="glyphicon glyphicon-menu-down pull-right">
-                            </span>
+                        <a href ="#" class="accordion">
+                        <span class="glyphicon glyphicon-map-marker"></span>
+                        Tracking
+                            <span class="glyphicon glyphicon-menu-down"></span>
                         </a>
                             <div class="panel-drop">
                                 <a href="/ontracking/default">Ongoing</a>
@@ -171,9 +184,10 @@
                             </div>
                     </li>
                     <li>
-                        <a href ="#" class="accordion">Issues
-                            <span style="padding-top: 0.8em; padding-right: 1em;" class="glyphicon glyphicon-menu-down pull-right">
-                            </span>
+                        <a href ="#" class="accordion">
+                            <span class="glyphicon glyphicon-exclamation-sign"></span>
+                            Issues
+                            <span class="glyphicon glyphicon-menu-down"></span>
                         </a>
                             <div class="panel-drop">
                                 <a href="{{route('issue.onissue')}}">Ongoing</a>
@@ -181,10 +195,15 @@
                             </div>
                     </li>
                     <li>
-                        <a href ="{{route('asset.index')}}" class="accordion">Assets</a> 
+                        <a href ="{{route('asset.index')}}" class="accordion">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                            Assets
+                        </a> 
                     </li>
                     <li>
-                        <a href ="{{route('employee.index')}}" class="accordion">Employees
+                        <a href ="{{route('employee.index')}}" class="accordion">
+                            <span class="glyphicon glyphicon-user"></span>
+                            Employees
                         </a>
                     </li>
                     @endif
@@ -197,6 +216,7 @@
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
+                        <span class="glyphicon glyphicon-log-out"></span>
                         Logout
                     </a>
 
@@ -211,8 +231,8 @@
 
         <!-- Header Content -->
         <div id="header-content-wrapper">
-            <div class="container-fluid">
-                <div><a href="#menu-toggle" class="btn" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></a></div><br>
+            <div class="container-fluid" style="padding-top: 0.4em">
+                <div><a href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></a></div><br>
             </div>
         </div>
         <!-- /#header-content-wrapper -->
