@@ -25,6 +25,11 @@
 
 #menu-toggle {
   color: #fff;
+  font-size: 16px;
+}
+
+#menu-toggle :hover {
+  color: #222D31;
 }
 
 /* Content Styles */
@@ -48,9 +53,6 @@
   z-index: 0;
 }
 
-.square {
-  background: #fff;
-}
 /* Sidebar Styles */
 
 .sidebar-nav {
@@ -105,7 +107,7 @@
     height: 65px;
     font-size: 16px;
     line-height: 65px;
-    background: ##222D31;
+    background: #000;
 }
 .sidebar-nav > .sidebar-profile a {
     color: #fff;
@@ -122,6 +124,16 @@
     line-height: 37px;
     background: #1A2225;
     color: #ECEFF4;
+}
+
+.sidebar-nav > li a span {
+  margin-left: -20px;
+  padding-right: 10px;
+}
+
+.glyphicon-menu-down {
+  float: right;
+  padding-top: 0.8em;
 }
 
 /* Dashboard Styles */
