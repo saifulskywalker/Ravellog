@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Collection;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
 use App\Box;
 use App\Item;
 use App\Tag;
@@ -336,7 +338,7 @@ class BoxesController extends Controller
             $boxes = Input::get('box_id');
             $expect_dep_date = Input::get('expect_dep_date');
             $expect_arr_date = Input::get('expect_arr_date');
-            list($to_id,$to_name) = explode('|',Input::get('to'));
+            list($to_id,$to_name,$to_lat,$to_long) = explode('|',Input::get('to'));
             list($from_id,$from_name) = explode('|',Input::get('from'));
             $employee = Input::get('employee');
             $truck = Input::get('truck');
@@ -363,7 +365,19 @@ class BoxesController extends Controller
             $move->arrive_to            = $to_name;
             $move->truck_id             = $truck;
             $move->save();
+            $moveid = $move->id;
             
+            $client = new Client();
+            $res = $client->request('POST', 'localhost:3000/api/command', [
+            'json' => [
+                'moving_id' => $moveid,
+                'truck_id' => $truck,
+                'lat' => $to_lat,
+                'long' => $to_long
+            ]
+        ]);
+            $statusCode =  $res->getStatusCode(); // 200
+            $body = $res->getBody();
 
             // redirect
             Session::flash('message', 'Successfully recorded entries for warehouse-to-warehouse shipping!');

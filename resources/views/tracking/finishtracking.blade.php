@@ -14,6 +14,7 @@
                         @if (Session::has('message'))
                           <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
+                        @if ($lists)
                         <div class="col-md-12">
                           <table class="table">
                             <thead>
@@ -26,19 +27,24 @@
                             </thead>
 
                             <tbody>
+                            @foreach ($lists as $list)
                                 <tr>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
+                                  <td>{{$list->truck_id}}</td>
+                                  <td>{{$list->depart_from}}</td>
+                                  <td>{{$list->arrive_to}}</td>
+                                  <td>{{$list->deleted_at}}</td>
                                 </tr>
+                            @endforeach
                             </tbody>
                           </table>
 
                           <div class="text-right">
-                            
+                            {!! $lists->links(); !!}
                           </div>    
                         </div>
+                        @else
+                          <div class="alert alert-info">No History</div>
+                        @endif
                       </fieldset>
                     
                     @endif

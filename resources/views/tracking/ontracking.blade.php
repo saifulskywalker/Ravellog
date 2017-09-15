@@ -16,6 +16,7 @@
                         @endif
                         <div class="col-md-12">
                           <table class="table">
+                            @if ($lists)
                             <thead>
                               <tr>
                                   <th>Truck ID</th>
@@ -26,15 +27,25 @@
                             </thead>
 
                             <tbody>
-                            @foreach ($lists as $list)
-                                <tr>
-                                  <td>{{$list->truck_id}}</td>
-                                  <td>{{$list->depart_from}}</td>
-                                  <td>{{$list->arrive_to}}</td>
-                                  <td><a href="/ontracking/{{$list->id}}"><button class="btn btn-info" type="button" onclick=""><span>View</span></button></a></td>
-                                </tr>
-                            @endforeach
+                              @foreach ($lists as $list)
+                                  <tr>
+                                    <td>{{$list->truck_id}}</td>
+                                    <td>{{$list->depart_from}}</td>
+                                    <td>{{$list->arrive_to}}</td>
+                                    <td><a href="/ontracking/{{$list->id}}"><button class="btn btn-info" type="button" onclick=""><span>View</span></button></a></td>
+                                  </tr>
+                              @endforeach
                             </tbody>
+                            @else
+                              <thead>
+                              <tr>
+                              <br>
+                                No Ongoing Warehouse-to-Warehouse Shipment
+                              </tr>
+                                  
+                              </thead>
+
+                            @endif
                           </table>
 
                           <div class="text-right">
@@ -48,6 +59,7 @@
             </div>
         </div>
     </div>
+    @if ($trackings)
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
       <div class="panel panel-info">
@@ -61,6 +73,7 @@
         </div>
       </div>
     </div>
+    @endif
     
     @endif
     @if(Auth::guest())
@@ -83,30 +96,34 @@
         });
 
         //create empty LatLngBounds object
-        var bounds = new google.maps.LatLngBounds();
-        var infowindow = new google.maps.InfoWindow();
+        if (typeof locations !== undefined and locations.length > 0) {
+          var bounds = new google.maps.LatLngBounds();
+          var infowindow = new google.maps.InfoWindow();
 
-        var marker, i;
+          var marker, i;
 
-        for (i = 0; i < locations.length; i++) { 
-                marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[i][2], locations[i][3]),
-                map: map
-            });
+          for (i = 0; i < locations.length; i++) { 
+                  marker = new google.maps.Marker({
+                  position: new google.maps.LatLng(locations[i][2], locations[i][3]),
+                  map: map
+              });
 
-            //extend the bounds to include each marker's position
-            bounds.extend(marker.position);
+              //extend the bounds to include each marker's position
+              bounds.extend(marker.position);
 
-            google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                return function() {
-                  infowindow.setContent('Time: '+locations[i][1]);
-                  infowindow.open(map, marker);
-                }
-            })(marker, i));
+              google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                  return function() {
+                    infowindow.setContent('Time: '+locations[i][1]);
+                    infowindow.open(map, marker);
+                  }
+              })(marker, i));
+          }
+
+          //now fit the map to the newly inclusive bounds
+          map.fitBounds(bounds); //auto zoom
+          map.panToBounds(bounds); //auto center
+        } else {
+          //sigit tolong munculin peta indonesia
         }
-
-        //now fit the map to the newly inclusive bounds
-        map.fitBounds(bounds); //auto zoom
-        map.panToBounds(bounds); //auto center
     </script>
 @endsection
