@@ -59,12 +59,11 @@
             </div>
         </div>
     </div>
-    @if ($trackings)
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
       <div class="panel panel-info">
         <div class="panel-heading">
-          Truck Status {{$trackings[0]->moving_box_id}}
+          Truck Status
         </div>
         <div class="panel-body">
           <div id="map" style="height: 400px; width: auto; margin: -16px;">
@@ -73,7 +72,6 @@
         </div>
       </div>
     </div>
-    @endif
     
     @endif
     @if(Auth::guest())
@@ -96,7 +94,6 @@
         });
 
         //create empty LatLngBounds object
-        if (typeof locations !== undefined and locations.length > 0) {
           var bounds = new google.maps.LatLngBounds();
           var infowindow = new google.maps.InfoWindow();
 
@@ -122,8 +119,5 @@
           //now fit the map to the newly inclusive bounds
           map.fitBounds(bounds); //auto zoom
           map.panToBounds(bounds); //auto center
-        } else {
-          //sigit tolong munculin peta indonesia
-        }
     </script>
 @endsection

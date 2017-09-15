@@ -29,7 +29,7 @@ class DashboardController extends Controller
     public function index()
     {
         $warehouses = Warehouse::get();
-        $boxes = Box::count();
+        $boxes = Box::whereNotNull('warehouse')->count();
         $inboundboxes = InboundBox::whereNull('act_arrival_date')->join('boxes','inbound_boxes.box_id','=','boxes.id')->get();
         $outboundboxes = OutboundBox::whereNull('act_depart_date')->join('boxes','outbound_boxes.box_id','=','boxes.id')->get();
         $movingboxes = MovingBox::count();
