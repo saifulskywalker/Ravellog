@@ -57,12 +57,12 @@
                             <select type="text" class="form-control" id="" name='to' placeholder="Arrival Destination" required>
                             @if (auth()->user()->privilege == 'superuser')
                               @foreach ($warehouses as $warehouse)
-                                <option value="{{$warehouse->id}}|{{$warehouse->name}}">{{$warehouse->name}}</option>
+                                <option value="{{$warehouse->id}}|{{$warehouse->name}}|{{$warehouse->latitude}}|{{$warehouse->longitude}}">{{$warehouse->name}}</option>
                               @endforeach
                             @else
                               @foreach ($warehouses as $warehouse)
                                 @if ($warehouse->id != auth()->user()->privilege)
-                                  <option value="{{$warehouse->id}}|{{$warehouse->name}}">{{$warehouse->name}}</option>
+                                  <option value="{{$warehouse->id}}|{{$warehouse->name}}|{{$warehouse->latitude}}|{{$warehouse->longitude}}">{{$warehouse->name}}</option>
                                 @endif
                               @endforeach
                             @endif

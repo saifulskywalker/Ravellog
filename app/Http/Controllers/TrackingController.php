@@ -13,8 +13,12 @@ class TrackingController extends Controller
     {
     	$warehouse = Warehouse::get();
     	if ($id == 'default') {
-    		$lists = MovingBox::orderBy('created_at','asc')->get();
-    		$trackings = MovingBox::orderBy('created_at','asc')->first()->tracking;
+    		$lists = MovingBox::orderBy('created_at','asc')->first();
+            if ($lists) {
+                $trackings = MovingBox::orderBy('created_at','asc')->first()->tracking;
+            } else {
+                $trackings = [];
+            }
     	} else {
     		$lists = MovingBox::orderBy('created_at','asc')->get();
     		$trackings = MovingBox::find($id)->tracking;
@@ -23,6 +27,7 @@ class TrackingController extends Controller
     }
     public function finishtracking()
     {
-    	return view('tracking.finishtracking');
+        $lists =  MovingBox::withTrashed()->orderBy('created_at','asc')->paginate(20);
+    	return view('tracking.finishtracking',compact('lists'));
     }
 }
