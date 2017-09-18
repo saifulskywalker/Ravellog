@@ -3,6 +3,10 @@
   transition: all 0.4s ease 0s;
 }
 
+.row {
+  max-width: 100%;
+}
+
 #sidebar-wrapper {
   margin-left: -250px;
   left: 250px;

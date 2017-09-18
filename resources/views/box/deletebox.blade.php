@@ -3,17 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row no-gutters">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
         <legend style="padding-left:1em; padding-top:0.5em;">Delete Box</legend>
+        @if (Session::has('message'))
+          <div class="alert alert-info">{{ Session::get('message') }}</div>
+        @endif
             <div class="panel panel-success">
                     @if(Auth::check())
                     <form class="form-horizontal" style="padding:1em" method="POST" action="{{ route('boxes.store') }}">
                     {{ csrf_field() }}
                       <fieldset>
-                        
-                        @if (Session::has('message'))
-                          <div class="alert alert-info">{{ Session::get('message') }}</div>
-                        @endif
                         <div id="del_tag_fields"></div>
                         <div class="row profile-table">
                           <div class="col-sm-11 profile-table">
