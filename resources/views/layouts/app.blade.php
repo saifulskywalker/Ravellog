@@ -104,6 +104,7 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="{{route('/')}}">
+                        <img src="{{ asset('img/logo.png') }}">
                         Ravellog
                     </a>
                 </li>
@@ -245,6 +246,28 @@
         </div>
         <!-- /#body-content-wrapper -->
 
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="lef-footer pull-left">
+                                    Copyright &copy; PT. Ravelware Technology Indonesia
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="right-footer pull-right">
+                                    Version 1.1.1
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+
     </div>
     <!-- /#wrapper -->
 
@@ -325,5 +348,7 @@
     </script>
 
 </body>
+
+
 
 </html>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <!-- Dashboard Info -->
@@ -81,7 +81,7 @@
 
                     <!-- Incoming Box -->
                     <div class="col-md-6">
-                        <div class="panel">
+                        <div class="panel panel-info">
                             <div class="panel-heading">
                                 Incoming Boxes for Today
                             </div>
@@ -117,7 +117,7 @@
 
                     <!-- Outcoming Box -->
                     <div class="col-md-6">
-                        <div class="panel">
+                        <div class="panel panel-info">
                             <div class="panel-heading">
                                 Shipping Out for Today
                             </div>
