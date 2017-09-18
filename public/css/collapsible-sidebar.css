@@ -56,7 +56,6 @@
 /* Sidebar Styles */
 
 .sidebar-nav {
-    position: absolute;
     top: 0;
     width: 250px;
     margin: 0;
@@ -91,7 +90,6 @@
     font-size: 20px;
     line-height: 45px;
     background: #367FA8;
-    padding-left: 50px;
 }
 
 .sidebar-nav > .sidebar-brand a {
@@ -140,6 +138,11 @@
 .dashboard-tracking {
   margin-left: 15px;
   margin-right: 15px;
+}
+
+/* Footer Style*/
+footer {
+  margin: 10px;
 }
 
 @media (max-width:767px) {
