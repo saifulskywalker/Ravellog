@@ -6,14 +6,13 @@
     <div class="row no-gutters">
         <div class="col-md-10 col-md-offset-1">
             <legend style="padding-left:1em; padding-top:0.5em;">Ongoing Tracking</legend>
+            @if (Session::has('message'))
+              <div class="alert alert-info">{{ Session::get('message') }}</div>
+            @endif
             <div class="panel panel-success">
                     
                     {{ csrf_field() }}
                       <fieldset>
-                        
-                        @if (Session::has('message'))
-                          <div class="alert alert-info">{{ Session::get('message') }}</div>
-                        @endif
                         <div class="col-md-12">
                           <table class="table">
                             @if ($lists)
