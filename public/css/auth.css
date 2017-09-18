@@ -3,12 +3,9 @@
 	min-height: 100vh;
 }
 .content {
-	padding-top: 15vh;
+	padding-top: 25vh;
 }
 
-.content > .head-content {
-	color: #fff;
-	text-align: center;
-	font-size: 36px;
-	margin-bottom: 10px;
+.panel-heading {
+	font-size: 20px;
 }

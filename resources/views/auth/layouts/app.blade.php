@@ -24,9 +24,6 @@
 
         <body>
             <div class="content">
-                <div class="head-content">
-                    Ravellog
-                </div>
                 @yield('content')
             </div>
         </body>
