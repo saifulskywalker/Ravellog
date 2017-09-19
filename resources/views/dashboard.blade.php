@@ -66,7 +66,7 @@
 		            </div>
 		        </div>
 		        <div class="col-md-4">
-                    <div class="panel panel-warning">
+                    <div class="panel panel-danger">
                         <div class="panel-heading">
                         	<span class="glyphicon glyphicon-warning-sign"></span>
                             Warning
