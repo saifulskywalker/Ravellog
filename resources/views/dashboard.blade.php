@@ -1,76 +1,125 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
+	<legend>Dashboard 
+		<span style="font-size: 14px;">
+			@if (auth()->user()->privilege == 'superuser')
+                | All Warehouses
+            @else
+                @foreach ($warehouses as $warehouse)
+                    @if (auth()->user()->privilege == $warehouse->id)
+                        | {{$warehouse->name}}
+                    @endif
+                @endforeach
+            @endif
+		</span>
+	</legend>
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="dashboard-info">
             <!-- Dashboard Info -->
             <div class="row">
-                <div class="dashboard-info">
-                    <div class="col-xs-3">
-                        <div class="panel panel-success">
-                            <div class="panel-heading">
-                                Warehouse
-                            </div>
-                            <div class="panel-body">
-                                @if (auth()->user()->privilege == 'superuser')
-                                    All Warehouses
-                                @else
-                                    @foreach ($warehouses as $warehouse)
-                                        @if (auth()->user()->privilege == $warehouse->id)
-                                            {{$warehouse->name}}
-                                        @endif
-                                    @endforeach
-                                @endif
-                            </div>
+
+				<div class="col-md-8">
+					<div class="row">
+		                <div class="">
+		                    <div class="col-xs-4">
+		                        <div class="panel panel-1">
+		                            <div class="panel-heading">
+		                                Vehicle on the Way
+		                            </div>
+		                            <div class="panel-body">
+		                                {{$movingboxes}}
+		                                <span class="pull-right">
+		                                	<i class="fa fa-truck" aria-hidden="true"></i>
+		                                </span>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    <div class="col-xs-4">
+		                        <div class="panel panel-2">
+		                            <div class="panel-heading">
+		                                Number of Boxes
+		                            </div>
+		                            <div class="panel-body">
+		                                {{$boxes}}
+		                                <span class="pull-right">
+		                                	<i class="fa fa-cube" aria-hidden="true"></i>
+		                                </span>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    <div class="col-xs-4">
+		                        <div class="panel panel-3">
+		                            <div class="panel-heading">
+		                                Number of Assets
+		                            </div>
+		                            <div class="panel-body">
+		                                <span class="pull-right">
+		                                	<i class="fa fa-dropbox" aria-hidden="true"></i>
+		                                </span>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    
+		                </div>
+		            </div>
+		        </div>
+		        <div class="col-md-4">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                        	<span class="glyphicon glyphicon-warning-sign"></span>
+                            Warning
+                        </div>
+                        <div class="panel-body">
+                            <a href="#">There is no warning</a>
                         </div>
                     </div>
-                    <div class="col-xs-3">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                Number of Boxes
-                            </div>
-                            <div class="panel-body">
-                                {{$boxes}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-3">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                Vehicle on the Way
-                            </div>
-                            <div class="panel-body">
-                                {{$movingboxes}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-3">
-                        <div class="panel panel-warning">
-                            <div class="panel-heading">
-                                Warning
-                            </div>
-                            <div class="panel-body">
-                                <a href="#">There is no warning</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+		        </div>
+
             </div><!-- /dashboard-info -->
 
             <!-- Dashboard Tracking-->
             <div class="row">
                 <div class="dashboard-tracking">
-                    <div class="">
+                    <div class="col-md-8">
+                    	<div class="panel-title">
+	                    	<i class="fa fa-map-o" aria-hidden="true"></i>
+	                            Our Warehouses
+	                    </div>
                         <div class="panel panel-info">
-                            <div class="panel-heading">
-                                Our Warehouses
-                            </div>
                             <div class="panel-body">
-                                <div id="map" style="height: 400px; width: auto; margin: -16px;">
+                                <div id="map" style="height: 300px; width: auto; margin: -16px;">
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-4">
+                    	<div class="panel-title">
+		                	<span class="glyphicon glyphicon-road"></span>
+		        			Latest Outgoing Trucks
+		        		</div>
+                    	<div class="panel panel-info">
+                    		<table class="table">
+	                    		<thead>
+	                    			<tr>
+	                    				<th>Truck ID</th>
+	                    				<th>Destination</th>
+	                    			</tr>
+	                    		</thead>
+	                    		<tbody>
+	                    			<tr>
+	                    				<td>1</td>
+	                    				<td>Warehouse Jakarta</td>
+	                    			</tr>
+	                    			<tr>
+	                    				<td>2</td>
+	                    				<td>Warehouse Tangerang</td>
+	                    			</tr>
+	                    		</tbody>
+	                    	</table>
+                    	</div>
+                    	
                     </div>
                 </div>
             </div><!-- /dashboard-tracking -->
@@ -80,11 +129,12 @@
                 <div class="dashboard-shipping">
 
                     <!-- Incoming Box -->
-                    <div class="col-md-6">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                Incoming Boxes for Today
-                            </div>
+                    <div class="col-md-4">
+                    	<div class="panel-title">
+	                    	<span class="glyphicon glyphicon-import"></span>
+	                            Incoming Boxes for Today
+	                    </div>
+                        <div class="panel panel-default">	
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -116,11 +166,12 @@
                     </div><!-- /incoming box -->
 
                     <!-- Outcoming Box -->
-                    <div class="col-md-6">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                Shipping Out for Today
-                            </div>
+                    <div class="col-md-4">
+                    	<div class="panel-title">
+	                    	<span class="glyphicon glyphicon-export"></span>
+	                        Shipping Out for Today
+	                    </div>
+                        <div class="panel panel-default">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -151,6 +202,30 @@
                         </div>
                     </div><!-- /outcoming box -->
                     
+					<!-- Latest Added Inventory -->
+					<div class="col-md-4">
+						<div class="panel-title">
+	                    	<span class="glyphicon glyphicon-th-list"></span>
+							Latest Added Inventory
+						</div>
+						<div class="panel panel-default">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Box Name</th>
+										<th>Position</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td></td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div><!-- end of latest added inventory -->
+
                 </div>
             </div><!-- /dashboard-shipping -->
         </div>
