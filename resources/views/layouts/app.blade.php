@@ -20,6 +20,7 @@
     <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-multiselect.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- jQuery -->
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.js') }}"></script>
@@ -240,16 +241,16 @@
 
         <!-- Body Content -->
         <div id="body-content-wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid" style="margin-top: -15px;">
             @yield('content')
             </div>
         </div>
         <!-- /#body-content-wrapper -->
 
         <footer>
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
+                    <div class="">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="lef-footer pull-left">

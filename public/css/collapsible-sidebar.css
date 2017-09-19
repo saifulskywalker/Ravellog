@@ -135,10 +135,44 @@
 }
 
 /* Dashboard Styles */
-.dashboard-tracking {
-  margin-left: 15px;
-  margin-right: 15px;
+.dashboard-info, .dashboard-tracking, .dashboard-shipping{
+  margin-top: -10px;
 }
+.panel-title {
+  margin-left: 0.5em;
+}
+
+/* Dashboard Tracking*/
+.dashboard-tracking .table th, .dashboard-tracking .table td { 
+     border-top: none !important; 
+ }
+
+/* Dashboard Info */
+.dashboard-info .panel-body i {
+  font-size: 60px;
+  margin-top: -1.5em;
+}
+
+.dashboard-info .panel-1 .panel-body, .dashboard-info .panel-2 .panel-body, .dashboard-info .panel-3 .panel-body {
+  font-size: 50px;
+  margin-top: -0.75em;
+  margin-bottom: -0.4em;
+}
+
+.dashboard-info .panel-1 {
+  background-color: #EB6F83;
+  color: #fff;
+}
+
+.dashboard-info .panel-2 {
+  background-color: #64D9B4;
+  color: #fff;
+}
+.dashboard-info .panel-3 {
+  background-color: #9775D1;
+  color: #fff;
+}
+
 
 /* Footer Style*/
 footer {
