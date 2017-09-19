@@ -7,7 +7,7 @@
   margin-left: -250px;
   left: 250px;
   width: 250px;
-  background: #000;
+  background: #3EA886;
   position: fixed;
   height: 100%;
   overflow-y: auto;
@@ -39,7 +39,7 @@
   width: 100%;
   padding-top: 5px;
   transition: all 0.4s ease 0s;
-  background: #3C8DBC;
+  background: #0D8C64;
   position: fixed;
   z-index: 1;
 }
@@ -49,7 +49,7 @@
   padding-top: 75px;
   min-height: 97vh;
   transition: all 0.4s ease 0s;
-  background: #ECEFF4;
+  background: #E3E3E3;
   z-index: 0;
 }
 
@@ -71,13 +71,13 @@
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #B8C7CE;
+    color: #fff;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
-    background: #1A2225;
+    background: #006142;
 }
 
 .sidebar-nav li a:active,
@@ -89,7 +89,7 @@
     height: 45px;
     font-size: 20px;
     line-height: 45px;
-    background: #367FA8;
+    background: #0D8C64;
 }
 
 .sidebar-nav > .sidebar-brand a {
@@ -105,7 +105,7 @@
     height: 65px;
     font-size: 16px;
     line-height: 65px;
-    background: #000;
+    background: #3EA886;
 }
 .sidebar-nav > .sidebar-profile a {
     color: #fff;
@@ -120,7 +120,7 @@
     height: 37px;
     font-size: 12px;
     line-height: 37px;
-    background: #1A2225;
+    background: #3EA886;
     color: #ECEFF4;
 }
 
@@ -169,7 +169,7 @@
   color: #fff;
 }
 .dashboard-info .panel-3 {
-  background-color: #9775D1;
+  background-color: #F5AE40;
   color: #fff;
 }
 
