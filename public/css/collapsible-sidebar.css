@@ -138,8 +138,9 @@
 .dashboard-info, .dashboard-tracking, .dashboard-shipping{
   margin-top: -10px;
 }
-.panel-title {
+.dashboard-tracking .panel-title, .dashboard-shipping .panel-title {
   margin-left: 0.5em;
+  color: #2B2B2B;
 }
 
 /* Dashboard Tracking*/
