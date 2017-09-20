@@ -14,27 +14,39 @@
                         @if (Session::has('message'))
                           <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
-                        <div class="form-group">
-                            <label for="inputBoxTag">Truck ID</label>
-                              <select type="text" class="form-control" id="" name='' placeholder="Truck ID" disabled>
-                              </select>
+                          <div class="form-group">
+                            <div class="col-sm-12">
+                              <label for="inputBoxTag">Truck ID</label>
+                                <select type="text" class="form-control" id="" name='' placeholder="Truck ID" disabled>
+                                </select>
+                            </div>
                           </div>
                           <div class="form-group">
-                            <label for="inputBoxName">From</label>
-                              <select type="text" class="form-control" id="" name='' placeholder="From" disabled>
-                              </select>
+                            <div class="col-sm-12">
+                              <label for="inputBoxName">From</label>
+                                <select type="text" class="form-control" id="" name='' placeholder="From" disabled>
+                                </select>
+                            </div>
                           </div>
                           <div class="form-group">
-                            <label for="inputBoxName">To</label>
-                              <select type="text" class="form-control" id="" name='' placeholder="To" disabled>
-                              </select>
+                            <div class="col-sm-12">
+                              <label for="inputBoxName">To</label>
+                                <select type="text" class="form-control" id="" name='' placeholder="To" disabled>
+                                </select>
+                            </div>
                           </div>
                           <div class="form-group">
-                            <label for="inputBoxName">Justification</label>
-                              <textarea class="form-control" rows="5" id="inputJustify" name='' placeholder="Justification" required>
-                              </textarea>
+                            <div class="col-sm-12">
+                              <label for="inputBoxName">Justification</label>
+                                <textarea class="form-control" rows="5" id="inputJustify" name='' placeholder="Justification" required>
+                                </textarea>
+                            </div>
                           </div>
-                          <button type="submit" class="btn btn-default">Submit</button>
+                          <div class="form-group">
+                          <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </div>
+                        </div>
                       </fieldset>
                     </form>
                     @endif
