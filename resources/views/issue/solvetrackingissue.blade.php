@@ -7,39 +7,51 @@
         <legend style="padding-left:1em; padding-top:0.5em;">Resolve Trucking Issue</legend>
             <div class="panel panel-success">
                     @if(Auth::check())
-                    <form class="form-horizontal" style="padding:1em" method="POST" action="">
+                    <form class="form-horizontal" style="padding:1em" method="POST" action="{{ route('issue.storetrackingissue') }}">
                     {{ csrf_field() }}
                       <fieldset>
 
                         @if (Session::has('message'))
                           <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
+
+                        @foreach ($issues as $issue)
                           <div class="form-group">
                             <div class="col-sm-12">
                               <label for="inputBoxTag">Truck ID</label>
-                                <select type="text" class="form-control" id="" name='' placeholder="Truck ID" disabled>
-                                </select>
+                                <input type="text" class="form-control" id="" name='' value="{{$issue->truck_id}}" placeholder="{{$issue->truck_id}}" disabled>
+                                </input>
+                                <input type="hidden" class="form-control" id="" value="{{$issue->id}}" name="id"></input>
+                                <input type="hidden" class="form-control" id="" value="{{auth()->user()->username}}" name="user"></input>
                             </div>
                           </div>
                           <div class="form-group">
                             <div class="col-sm-12">
                               <label for="inputBoxName">From</label>
-                                <select type="text" class="form-control" id="" name='' placeholder="From" disabled>
-                                </select>
+                                <input type="text" class="form-control" id="" name='' value="{{$issue->depart_from}}" disabled>
+                                </input>
                             </div>
                           </div>
                           <div class="form-group">
                             <div class="col-sm-12">
                               <label for="inputBoxName">To</label>
-                                <select type="text" class="form-control" id="" name='' placeholder="To" disabled>
-                                </select>
+                                <input type="text" class="form-control" id="" name='' value="{{$issue->arrive_to}}" disabled>
+                                </input>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-md-12">
+                              <label for="inputBoxName">Issue</label>
+                                <input type="text" class="form-control" id="" name="" value="{{$issue->category}}" placeholder="{{$issue->category}}" disabled>
+                                </input>
+                                <input type="hidden" class="form-control" id="" name="cat" value="{{$issue->category}}">
+                                </input>
                             </div>
                           </div>
                           <div class="form-group">
                             <div class="col-sm-12">
                               <label for="inputBoxName">Justification</label>
-                                <textarea class="form-control" rows="5" id="inputJustify" name='' placeholder="Justification" required>
-                                </textarea>
+                                <textarea class="form-control" rows="5" id="inputJustify" name='justification' required></textarea>
                             </div>
                           </div>
                           <div class="form-group">
@@ -47,6 +59,7 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
                           </div>
                         </div>
+                        @endforeach
                       </fieldset>
                     </form>
                     @endif

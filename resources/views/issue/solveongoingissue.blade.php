@@ -16,7 +16,7 @@
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxTag">Box Tag</label>
-                              <input type="text" class="form-control" id="" value="{{$issue->box_tag}}" name="box_tag" placeholder="{{$issue->box_tag}}" disabled>
+                              <input type="text" class="form-control" id="" value="{{$issue->box_tag}}" name="box_tag" disabled>
                               </input>
                               <input type="hidden" class="form-control" id="" value="{{$issue->id}}" name="id"></input>
                               <input type="hidden" class="form-control" id="" value="{{$issue->inout_id}}" name='inout_id'></input>
@@ -26,22 +26,23 @@
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxName">Box Name</label>
-                              <input type="text" class="form-control" id="" name='box_name' value placeholder="{{$issue->box_name}}" disabled>
+                              <input type="text" class="form-control" id="" name='box_name' value="{{$issue->box_name}}" disabled>
                               </input>
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxName">Issue</label>
-                              <input type="text" class="form-control" id="" name="category" value="{{$issue->category}}" placeholder="{{$issue->category}}" disabled>
+                              <input type="text" class="form-control" id="" name="" value="{{$issue->category}}" placeholder="{{$issue->category}}" disabled>
+                              </input>
+                              <input type="hidden" class="form-control" id="" name="cat" value="{{$issue->category}}">
                               </input>
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="col-md-12">
                             <label for="inputBoxName">Justification</label>
-                              <textarea class="form-control" rows="5" id="inputJustify" name="justification" placeholder="Justification" required>
-                              </textarea>
+                              <textarea class="form-control" rows="5" id="inputJustify" name="justification" placeholder="Justification" required></textarea>
                           </div>
                         </div>
                         <div class="form-group">
