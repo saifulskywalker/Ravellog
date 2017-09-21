@@ -46,7 +46,7 @@ Route::get('finishtracking','TrackingController@finishtracking')->name('tracking
 
 Route::get('onissue','IssueController@onissue')->name('issue.onissue');
 Route::get('/onboxissue/{id}','IssueController@onboxissue');
-Route::get('/ontrackingissue/{id}','IssueController@edittrackingissue');
+Route::get('/ontrackingissue/{id}','IssueController@ontrackingissue');
 Route::post('storeboxissue','IssueController@storeboxissue')->name('issue.storeboxissue');
 Route::post('storetrackingissue','IssueController@storetrackingissue')->name('issue.storetrackingissue');
 Route::get('resolveissue','IssueController@resolveissue')->name('issue.resolveissue');
