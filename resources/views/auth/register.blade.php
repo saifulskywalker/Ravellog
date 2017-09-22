@@ -13,7 +13,8 @@
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
 
-                            <div class="col-md-6">
+                           <div class="input-group col-md-6">
+                                <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
                                 @if ($errors->has('name'))
@@ -27,7 +28,8 @@
                         <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Username</label>
 
-                            <div class="col-md-6">
+                            <div class="input-group col-md-6">
+                                <span class="input-group-addon"><i class="fa fa-users" aria-hidden="true"></i></span>
                                 <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
 
                                 @if ($errors->has('username'))
@@ -41,7 +43,8 @@
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
-                            <div class="col-md-6">
+                            <div class="input-group col-md-6">
+                                <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
@@ -55,7 +58,8 @@
                         <div class="form-group{{ $errors->has('privilege') ? ' has-error' : '' }}">
                             <label for="privilege" class="col-md-4 control-label">Privilege</label>
 
-                            <div class="col-md-6">
+                            <div class="input-group col-md-6">
+                                <span class="input-group-addon"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
                                 <input id="privilege" type="text" class="form-control" name="privilege" value="{{ old('privilege') }}" required autofocus>
 
                                 @if ($errors->has('privilege'))
@@ -69,7 +73,8 @@
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
-                            <div class="col-md-6">
+                            <div class="input-group col-md-6">
+                                <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
                                 <input id="password" type="password" class="form-control" name="password" required>
 
                                 @if ($errors->has('password'))
@@ -83,7 +88,8 @@
                         <div class="form-group">
                             <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
 
-                            <div class="col-md-6">
+                            <div class="input-group col-md-6">
+                                <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
