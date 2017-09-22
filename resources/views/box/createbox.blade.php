@@ -18,40 +18,49 @@
                             <div class="form-group">
                               <div class="col-md-12">
                                 <label for="inputBoxTag">Box Tag</label>
-                                <select type="text" class="form-control" id="inputBoxName" name='tag' placeholder="Box Tag" required>
-                                @foreach ($tags as $tags)
-                                  <option>{{$tags}}</option>
-                                @endforeach
-                                </select>
+                                <div class="input-group col-md-12">
+                                  <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
+                                  <select type="text" class="form-control" id="inputBoxName" name='tag' placeholder="Box Tag" required>
+                                  @foreach ($tags as $tags)
+                                    <option>{{$tags}}</option>
+                                  @endforeach
+                                  </select>
+                                </div>
                               </div>
                             </div>
                             <div class="form-group">
                               <div class="col-md-12">
                                 <label for="inputBoxTag">Box Name</label>
-                                <input type="text" class="form-control" id="inputBoxName" name='name' placeholder="Name" required>
-                                @if ($errors->has('name'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('name') }}</strong>
-                                        </span>
-                                @endif
+                                <div class="input-group col-md-12">
+                                  <span class="input-group-addon"><i class="fa fa-cube" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" id="inputBoxName" name='name' placeholder="Name" required>
+                                    @if ($errors->has('name'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('name') }}</strong>
+                                            </span>
+                                    @endif
+                                </div>
                               </div>
                             </div>
                             <div class="form-group">
                               <div class="col-md-12">
                                 <label for="inputBoxTag">Warehouse</label>
-                                <select type="text" class="form-control" id="inputBoxName" name='warehouse' placeholder="Warehouse" required>
-                                @if (auth()->user()->privilege == 'admin')
-                                  @foreach ($warehouses as $warehouse)
-                                    <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
-                                  @endforeach
-                                @else
-                                  @foreach ($warehouses as $warehouse)
-                                    @if ($warehouse->id == auth()->user()->privilege)
+                                <div class="input-group col-md-12">
+                                  <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                  <select type="text" class="form-control" id="inputBoxName" name='warehouse' placeholder="Warehouse" required>
+                                  @if (auth()->user()->privilege == 'admin')
+                                    @foreach ($warehouses as $warehouse)
                                       <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
-                                    @endif
-                                  @endforeach
-                                @endif
-                                </select>
+                                    @endforeach
+                                  @else
+                                    @foreach ($warehouses as $warehouse)
+                                      @if ($warehouse->id == auth()->user()->privilege)
+                                        <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
+                                      @endif
+                                    @endforeach
+                                  @endif
+                                  </select>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -59,33 +68,42 @@
                             <div class="form-group">
                               <div class="col-md-12">
                                 <label for="inputBoxTag">Arrival Date</label>
-                                <input type="text" class="form-control" id="datepicker1" name='arrival' placeholder="Arrival Date" required>
-                                @if ($errors->has('arrival'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('arrival') }}</strong>
-                                        </span>
-                                @endif
+                                <div class="input-group col-md-12">
+                                  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                  <input type="text" class="form-control" id="datepicker1" name='arrival' placeholder="Arrival Date" required>
+                                  @if ($errors->has('arrival'))
+                                          <span class="help-block">
+                                              <strong>{{ $errors->first('arrival') }}</strong>
+                                          </span>
+                                  @endif
+                                </div>
                               </div>
                             </div>
                             <div class="form-group">
                               <div class="col-md-12">
                                 <label for="inputBoxTag">Expire Date</label>
-                                <input type="text" class="form-control" id="datepicker2" name='expire' placeholder="Expire Date" required>
-                                @if ($errors->has('expire'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('expire') }}</strong>
-                                        </span>
-                                @endif
+                                <div class="input-group col-md-12">
+                                  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                  <input type="text" class="form-control" id="datepicker2" name='expire' placeholder="Expire Date" required>
+                                  @if ($errors->has('expire'))
+                                          <span class="help-block">
+                                              <strong>{{ $errors->first('expire') }}</strong>
+                                          </span>
+                                  @endif
+                                </div>
                               </div>
                             </div>
                             <div class="form-group">
                               <div class="col-md-12">
                                 <label for="inputBoxTag">Person in Charge</label>
-                                <select type="text" class="form-control" id="" name='employee' placeholder="Person in Charge" required>
-                                @foreach ($employees as $id => $name)
-                                  <option value="{{$id}}">{{$name}}</option>
-                                @endforeach
-                                </select>
+                                <div class="input-group col-md-12">
+                                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                  <select type="text" class="form-control" id="" name='employee' placeholder="Person in Charge" required>
+                                  @foreach ($employees as $id => $name)
+                                    <option value="{{$id}}">{{$name}}</option>
+                                  @endforeach
+                                  </select>
+                                </div>
                               </div>
                             </div>
                           </div>
