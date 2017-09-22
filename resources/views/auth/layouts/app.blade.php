@@ -17,6 +17,7 @@
             <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
             <link href="{{ asset('css/app.css') }}" rel="stylesheet">
             <link href="{{ asset('css/auth.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
             <!-- jQuery -->
             <script src="{{ asset('js/jquery.js') }}"></script>
             <script src="{{ asset('js/jquery-ui.js') }}"></script>
