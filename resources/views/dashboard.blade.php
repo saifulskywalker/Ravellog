@@ -29,7 +29,7 @@
 		                                Vehicle on the Way
 		                            </div>
 		                            <div class="panel-body">
-		                                {{$movingboxes}}
+		                                {{$numbermovingboxes}}
 		                                <span class="pull-right">
 		                                	<i class="fa fa-truck" aria-hidden="true"></i>
 		                                </span>
@@ -55,6 +55,7 @@
 		                                Number of Assets
 		                            </div>
 		                            <div class="panel-body">
+                                        {{sizeof($assets)}}
 		                                <span class="pull-right">
 		                                	<i class="fa fa-dropbox" aria-hidden="true"></i>
 		                                </span>
@@ -72,7 +73,11 @@
                             Warning
                         </div>
                         <div class="panel-body">
+                        @if ($issues == 0)
                             <a href="#">There is no warning</a>
+                        @else
+                            <a href="{{route('issue.onissue')}}">There is {{$issues}} warning</a>
+                        @endif
                         </div>
                     </div>
 		        </div>
@@ -108,14 +113,18 @@
 	                    			</tr>
 	                    		</thead>
 	                    		<tbody>
-	                    			<tr>
-	                    				<td>1</td>
-	                    				<td>Warehouse Jakarta</td>
-	                    			</tr>
-	                    			<tr>
-	                    				<td>2</td>
-	                    				<td>Warehouse Tangerang</td>
-	                    			</tr>
+                                @if (empty($movingboxes[0]))
+                                    <tr>
+                                        <td>No Ongoing W2W Shipment</td>
+                                    </tr>
+                                @else
+                                    @foreach ($movingboxes as $move)
+                                    <tr>
+                                        <td>{{$move->truck_id}}</td>
+                                        <td>{{$move->arrive_to}}</td>
+                                    </tr>
+                                    @endforeach
+                                @endif
 	                    		</tbody>
 	                    	</table>
                     	</div>
@@ -143,6 +152,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @if (empty($inboundboxes[0]))
+                                    <tr>
+                                        <td>No Incoming Box</td>
+                                    </tr>
+                                @else
                                     @if ((auth()->user()->privilege == 'superuser') or (auth()->user()->privilege == 'admin'))
                                         @foreach ($inboundboxes as $in)
                                         <tr>
@@ -160,6 +174,7 @@
                                             @endif
                                         @endforeach
                                     @endif
+                                @endif
                                 </tbody>
                             </table>
                         </div>
@@ -180,7 +195,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @if ((auth()->user()->privilege == 'superuser') or (auth()->user()->privilege == 'admin'))
+                                @if (empty($outboundboxes[0]))
+                                    <tr>
+                                            <td>No Outgoing Box</td>
+                                    </tr>
+                                @else
+                                    @if ((auth()->user()->privilege == 'superuser') or (auth()->user()->privilege == 'admin'))
                                         @foreach ($outboundboxes as $out)
                                         <tr>
                                             <td>{{$out->tag_tag}}</td>
@@ -197,6 +217,8 @@
                                             @endif
                                         @endforeach
                                     @endif
+                                @endif
+                                    
                                 </tbody>
                             </table>
                         </div>

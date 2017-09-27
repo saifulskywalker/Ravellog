@@ -17,22 +17,37 @@
                           <table class="table">
                             <thead>
                               <tr>
-                                  <th>Box Tag</th>
-                                  <th>Box Name</th>
+                                  <th>Box Tag/Truck ID</th>
                                   <th>Issue</th>
-                                  <th>Justify</th>
+                                  <th>Justification</th>
                                   <th>User</th>
                               </tr>
                             </thead>
 
                             <tbody>
+                            @if (empty($issues[0]))
                                 <tr>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
+                                  <td>No Resolved Issue</td>
                                 </tr>
+                            @else
+                              @foreach ($issues as $issue)
+                                @if ($issue->category == 'truckopen' || $issue->category == 'disabled')
+                                <tr>
+                                  <td>{{$issue->truck_id}}</td>
+                                  <td>{{$issue->category}}</td>
+                                  <td>{{$issue->justification}}</td>
+                                  <td>{{$issue->user}}</td>
+                                </tr>
+                                @else
+                                <tr>
+                                  <td>{{$issue->box_tag}}</td>
+                                  <td>{{$issue->category}}</td>
+                                  <td>{{$issue->justification}}</td>
+                                  <td>{{$issue->user}}</td>
+                                </tr>
+                                @endif
+                              @endforeach
+                            @endif
                             </tbody>
                           </table>
 
