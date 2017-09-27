@@ -26,14 +26,20 @@
                             </thead>
 
                             <tbody>
-                            @foreach ($boxissues as $boxissue)
-                                <tr>
-                                  <td>{{$boxissue->box_tag}}</td>
-                                  <td>{{$boxissue->box_name}}</td>
-                                  <td>{{$boxissue->category}}</td>
-                                  <td><a href="/onboxissue/{{$boxissue->id}}"><button class="btn btn-info">Resolve</button></td>
-                                </tr>
-                            @endforeach
+                            @if (empty($boxissues[0]))
+                                  <tr>
+                                    <td>No Issue with boxes</td>
+                                  </tr>
+                            @else
+                              @foreach ($boxissues as $boxissue)
+                                  <tr>
+                                    <td>{{$boxissue->box_tag}}</td>
+                                    <td>{{$boxissue->box_name}}</td>
+                                    <td>{{$boxissue->category}}</td>
+                                    <td><a href="/onboxissue/{{$boxissue->id}}"><button class="btn btn-info">Resolve</button></td>
+                                  </tr>
+                              @endforeach
+                            @endif
                             </tbody>
                           </table>
 
@@ -77,15 +83,21 @@
                             </thead>
 
                             <tbody>
-                            @foreach ($trackingissues as $trackissue)
-                                <tr>
-                                  <td>{{$trackissue->truck_id}}</td>
-                                  <td>{{$trackissue->depart_from}}</td>
-                                  <td>{{$trackissue->arrive_to}}</td>
-                                  <td>{{$trackissue->category}}</td>
-                                  <td><a href="/ontrackingissue/{{$trackissue->id}}"><button class="btn btn-info">Resolve</button></td>
-                                </tr>
-                            @endforeach
+                            @if (empty($trackingissues[0]))
+                                  <tr>
+                                    <td>No Issue with trackings</td>
+                                  </tr>
+                            @else
+                              @foreach ($trackingissues as $trackissue)
+                                  <tr>
+                                    <td>{{$trackissue->truck_id}}</td>
+                                    <td>{{$trackissue->depart_from}}</td>
+                                    <td>{{$trackissue->arrive_to}}</td>
+                                    <td>{{$trackissue->category}}</td>
+                                    <td><a href="/ontrackingissue/{{$trackissue->id}}"><button class="btn btn-info">Resolve</button></td>
+                                  </tr>
+                              @endforeach
+                            @endif
                             </tbody>
                           </table>
 

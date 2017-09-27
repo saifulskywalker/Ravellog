@@ -22,7 +22,8 @@ class IssueController extends Controller
     }
     public function resolveissue()
     {
-    	return view('issue.resolveissue');
+        $issues = Issue::withTrashed()->whereNotNull('deleted_at')->get();
+    	return view('issue.resolveissue', compact('issues'));
     }
 
     public function onboxissue($id) 
