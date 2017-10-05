@@ -12,7 +12,6 @@
             <th>Box Name</th>
             <th>Issue</th>
             <th>Created at</th>
-            <th>Tes</th>
         </tr>
       </thead>
 
@@ -28,7 +27,6 @@
               <td>{{$boxissue->box_name}}</td>
               <td>{{$boxissue->category}}</td>
               <td>{{$boxissue->created_at}}</td>
-              <td>tes</td>
             </tr>
         @endforeach
       @endif
