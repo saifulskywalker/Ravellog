@@ -5,7 +5,11 @@
     <!-- Ongoing Issues -->
     <div class="row no-gutters">
         <div class="col-md-10 col-md-offset-1">
-            <legend style="padding-left:1em; padding-top:0.5em;">Ongoing Issues</legend>
+            <legend style="padding-left:1em; padding-top:0.5em;">Ongoing Issues
+              <span>
+                <a href="{{ route('pdfOngoingIssue') }}"><i class="fa fa-download pull-right" aria-hidden="true"></i></a>
+              </span>
+            </legend>
             @if (Session::has('message'))
               <div class="alert alert-info">{{ Session::get('message') }}</div>
             @endif
