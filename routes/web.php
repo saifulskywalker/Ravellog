@@ -50,3 +50,6 @@ Route::get('/ontrackingissue/{id}','IssueController@ontrackingissue');
 Route::post('storeboxissue','IssueController@storeboxissue')->name('issue.storeboxissue');
 Route::post('storetrackingissue','IssueController@storetrackingissue')->name('issue.storetrackingissue');
 Route::get('resolveissue','IssueController@resolveissue')->name('issue.resolveissue');
+
+//for download report as pdf
+Route::get('pdfOngoingIssue','pdfController@pdfOngoingIssue')->name('pdfOngoingIssue');
