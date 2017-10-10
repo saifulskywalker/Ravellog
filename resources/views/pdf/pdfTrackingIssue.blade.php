@@ -4,29 +4,31 @@
 @if(Auth::check())
 
 {{ csrf_field() }}
-    <legend>Ongoing Issues</legend>
+    <legend>Tracking Issues</legend>
     <table class="table">
       <thead>
         <tr>
-            <th>Box Tag</th>
-            <th>Box Name</th>
+            <th>Truck ID</th>
+            <th>From</th>
+            <th>To</th>
             <th>Issue</th>
             <th>Created at</th>
         </tr>
       </thead>
 
       <tbody>
-      @if (empty($boxissues[0]))
+      @if (empty($trackingissues[0]))
             <tr>
-              <td>No Issue with boxes</td>
+              <td>No Issue with trackings</td>
             </tr>
       @else
-        @foreach ($boxissues as $boxissue)
+        @foreach ($trackingissues as $trackissue)
             <tr>
-              <td>{{$boxissue->box_tag}}</td>
-              <td>{{$boxissue->box_name}}</td>
-              <td>{{$boxissue->category}}</td>
-              <td>{{$boxissue->created_at}}</td>
+              <td>{{$trackissue->truck_id}}</td>
+              <td>{{$trackissue->depart_from}}</td>
+              <td>{{$trackissue->arrive_to}}</td>
+              <td>{{$trackissue->category}}</td>
+              <td>{{$trackissue->created_at}}</td>
             </tr>
         @endforeach
       @endif

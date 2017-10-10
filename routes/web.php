@@ -53,3 +53,4 @@ Route::get('resolveissue','IssueController@resolveissue')->name('issue.resolveis
 
 //for download report as pdf
 Route::get('pdfOngoingIssue','pdfController@pdfOngoingIssue')->name('pdfOngoingIssue');
+Route::get('pdfTrackingIssue','pdfController@pdfTrackingIssue')->name('pdfTrackingIssue');
