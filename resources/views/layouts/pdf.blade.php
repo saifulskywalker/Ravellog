@@ -107,7 +107,7 @@
 				<div>User : {{auth()->user()->name}}</div>
 			</div>
 			<div class="right-text">
-				<div>Date : </div>
+				<div>Date : {{$fromDate}} to {{$toDate}}</div>
 			</div>
 		</div>
 		<hr>
