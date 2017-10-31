@@ -169,7 +169,7 @@ class BoxesController extends Controller
                 $inbox->box_id                = $box_id;
                 $inbox->exp_arrival_date      = $expect_arr_date;
                 $inbox->arrival_destination   = $arrival_destination;
-                $inbox->employee_id           = $employee;
+                $inbox->employee_tag           = $employee;
                 $inbox->save();
 
             // redirect
@@ -248,7 +248,7 @@ class BoxesController extends Controller
                 $box->box_id                = $in;
                 $box->exp_arrival_date      = $expect_arr_date;
                 $box->arrival_destination   = $arrival_destination;
-                $box->employee_id           = $employee;
+                $box->employee_tag           = $employee;
                 $box->save();
             }
             
@@ -298,7 +298,7 @@ class BoxesController extends Controller
                 $box->exp_depart_date      = $expect_dep_date;
                 $box->depart_destination   = $depart_destination;
                 $box->warehouse             = $warehouse;
-                $box->employee_id           = $employee;
+                $box->employee_tag          = $employee;
                 $box->save();
 
                 $delete = Box::find($out);
