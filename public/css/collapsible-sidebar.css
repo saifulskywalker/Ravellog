@@ -53,6 +53,13 @@
   z-index: 0;
 }
 
+/* Control Panel inline with Legend*/
+#control-panel {
+  font-size: 14px;
+  float: right;
+  color: #000;
+}
+
 /* Sidebar Styles */
 
 .sidebar-nav {
