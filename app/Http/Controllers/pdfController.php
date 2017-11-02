@@ -44,7 +44,7 @@ class pdfController extends Controller
             $boxes = DB::table('inbound_boxes')
             ->where('arrival_destination',auth()->user()->privilege)
             ->join('boxes','inbound_boxes.box_id','=','boxes.id')
-            ->join('employees','inbound_boxes.employee_id','=','employees.id')
+            ->join('employees','inbound_boxes.employee_tag','=','employees.id')
             ->whereBetween('inbound_boxes.created_at',[$fromDate,$endDate])->get();
 
             $pdf = PDF::loadView('pdf.pdfInbound',compact('boxes','warehouses','nowTime','fromDate','toDate'));
