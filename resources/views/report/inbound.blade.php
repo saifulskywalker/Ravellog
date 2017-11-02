@@ -89,12 +89,12 @@
             <fieldset>
 	            <div class="col-sm-5">
 	              <div class="form-group">
-	                <input type="text" name="fromDate" id="datepicker1" class="form-control" placeholder="From" placeholder="From" required>
+	                <input type="text" name="fromDate" id="datepicker3" class="form-control" placeholder="From" placeholder="From" required>
 	              </div>
 	            </div>
 	            <div class="col-sm-5">
 	              <div class="form-group">
-	                <input type="text" name="toDate" id="datepicker2" class="form-control" placeholder="To" placeholder="To" required>
+	                <input type="text" name="toDate" id="datepicker4" class="form-control" placeholder="To" placeholder="To" required>
 	              </div>
 	            </div>
 	            <div class="col-sm-2">	
