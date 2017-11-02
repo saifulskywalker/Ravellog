@@ -5,9 +5,7 @@
     <div class="row no-gutters">
         <div class="col-md-10 col-md-offset-1">
         <legend style="padding-left:1em; padding-top:0.5em;">Shipping In
-        	<span id="control-panel">
-        	  <a title="Export as pdf" data-toggle="modal" data-target="#exportModal"><button class="btn btn-success btn-sm">Export</button></a>
-        	</span>
+        	
         </legend>
         @if (Session::has('message'))
           <div class="alert alert-info">{{ Session::get('message') }}</div>
@@ -27,9 +25,12 @@
                 <input type="text" name="toDate" id="datepicker2" class="form-control" placeholder="To" placeholder="To" required>
               </div>
             </div>
-            <div class="col-sm-1">  
+            <div class="col-sm-6">  
               <div class="form-group">
                 <button type="submit" class="btn btn-primary">Filter</button>
+                <span>
+                  <a title="Export as pdf" data-toggle="modal" data-target="#exportModal"><button class="btn btn-success">Export</button></a>
+                </span>
               </div>
           </div>
          </fieldset>
