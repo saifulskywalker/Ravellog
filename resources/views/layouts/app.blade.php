@@ -76,7 +76,7 @@
     </script>
     <script type='text/javascript'>
       $( function() {
-        $( "#datepicker1,#datepicker2,#datepicker3" ).datepicker({ dateFormat: 'yy-mm-dd' });
+        $( "#datepicker1,#datepicker2,#datepicker3,#datepicker4" ).datepicker({ dateFormat: 'yy-mm-dd' });
       } );
       $(document).ready(function() {
         $("#multiselect").multiselect({
