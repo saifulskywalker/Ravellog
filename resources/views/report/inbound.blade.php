@@ -17,12 +17,12 @@
           <fieldset>
             <div class="col-sm-3">
               <div class="form-group">
-                <input type="text" name="fromDate" id="datepicker1" class="form-control" placeholder="From" placeholder="From" required>
+                <input type="text" name="fromDate" id="datepicker1" class="form-control" placeholder="From" placeholder="From">
               </div>
             </div>
             <div class="col-sm-3">
               <div class="form-group">
-                <input type="text" name="toDate" id="datepicker2" class="form-control" placeholder="To" placeholder="To" required>
+                <input type="text" name="toDate" id="datepicker2" class="form-control" placeholder="To" placeholder="To">
               </div>
             </div>
             <div class="col-sm-6">  
