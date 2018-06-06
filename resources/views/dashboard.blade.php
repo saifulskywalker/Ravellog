@@ -176,7 +176,8 @@
                                     @endif
                                 @endif
                                 </tbody>
-                            </table>
+                            </table>   
+                        </div>
                         </div>
                     </div><!-- /incoming box -->
 

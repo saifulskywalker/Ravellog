@@ -34,8 +34,8 @@ class DashboardController extends Controller
         $assets = Item::select(DB::raw('name, sum(quantity) as quant'))->join(DB::raw('(select id, warehouse from boxes where warehouse is not null and deleted_at is null) as box'),'box.id','=','items.box_id')->groupBy('name')->get();
         $warehouses = Warehouse::get();
         $boxes = Box::whereNotNull('warehouse')->count();
-        $inboundboxes = InboundBox::whereNull('act_arrival_date')->join('boxes','inbound_boxes.box_id','=','boxes.id')->get();
-        $outboundboxes = OutboundBox::whereNull('act_depart_date')->join('boxes','outbound_boxes.box_id','=','boxes.id')->get();
+        $inboundboxes = InboundBox::whereNull('act_arrival_date')->join('boxes','inbound_boxes.box_id','=','boxes.id')->paginate(10);
+        $outboundboxes = OutboundBox::whereNull('act_depart_date')->join('boxes','outbound_boxes.box_id','=','boxes.id')->paginate(10);
         $numbermovingboxes = MovingBox::count();
         $movingboxes = MovingBox::get();
         $issues = Issue::count();
